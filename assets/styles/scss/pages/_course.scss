@@ -1,0 +1,23 @@
+// @import "../config/Variables";
+
+.space {
+  height: 300px;
+}
+
+.wrap:has(h1) {
+  position: absolute;
+  top: $pad_hero;
+  left: $pad_hero;
+}
+.wrap:has(img, i) {
+  position: absolute;
+  bottom: $pad_hero;
+  right: $pad_hero;
+}
+h1 {
+  font-size: 2rem;
+  padding: 0.16em 0.28em;
+  color: $teal_prime;
+  border-radius: 5px;
+  text-align: center;
+}

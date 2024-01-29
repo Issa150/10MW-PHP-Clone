@@ -1,0 +1,164 @@
+// @import 'config/Variables.scss';
+
+// Genral Styling
+.fa_icone {
+  color: $teal_prime;
+  font-size: $sz_icone;
+}
+a {
+  font-size: 1rem;
+  display: block;
+  padding: 0.4em 0.6em;
+  background: #fff;
+  color: $teal_prime;
+  margin-block: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background: #e3e3e3;
+  }
+}
+// i.fa_icone{
+//     margin-right: 3px;
+// }
+i {
+  width: 25px;
+  margin-right: 0.3em;
+}
+
+// -----------------------------
+// Level 1
+.left_menu,
+.left_menu.home {
+  // width: 300px;
+  // margin-left: -350px;
+  // transition: .60s ease-in-out;
+  border-radius: $border_radius_containers;
+  background: $teal_prime;
+  overflow: hidden;
+  color: #fff;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  // ////////////////////////////
+  .wrap_tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: start;
+    gap: 5px;
+
+    .tab_head {
+        background: darken($teal_prime, 3%);
+        padding: .4em;
+        color: #cacaca;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+            background: darken($teal_prime, 10%);
+        }
+
+    }
+    .tab_head.active{
+        background: darken($teal_prime, $sec_teal_num);
+        color: #fff;
+        font-weight: 500;
+    }
+  }
+
+  // ////////////////////////////
+  // default state of contents is hidden
+  .wrap_content {
+    background: darken($teal_prime, $sec_teal_num);
+    padding: 0.4em;
+    display: none;
+
+    a {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 25px;
+        margin-right: 5px;
+      }
+
+      &.aside-item-course-title {
+        align-items: start;
+
+        i {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .profile_data {
+      display: grid;
+      gap: 0.5em;
+
+      .my_courses {
+        background: #fff;
+        color: #000;
+        padding: 1em;
+        border-radius: 5px;
+        box-shadow: 0 0 17px hsla(0, 0%, 50%, 0.66);
+        h2 {
+          font-size: 1.25rem;
+          margin-bottom: 0em;
+        }
+      }
+      .prfile_info {
+        background: #fff;
+        color: #000;
+        padding: 1em 1em;
+        border-radius: 5px;
+
+        .status {
+          font-size: 1.25rem;
+        }
+
+        .wrap_card_info {
+          display: grid;
+          grid-template-columns: auto 1fr;
+
+          img {
+            width: 60px;
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+          }
+          li {
+            font-weight: bold;
+            list-style: none;
+            span {
+              font-weight: normal;
+            }
+          }
+          .right {
+            padding-left: 1em;
+
+            ul li:last-child span a {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+
+    &.sites a:last-child {
+      margin-top: 20px;
+    }
+  }
+  // toggling visiblity of tab contents inside side nav
+  .wrap_content.show_content {
+    display: block;
+  }
+}
+// toggling Off convas side nav
+// .left_menu.active{
+//     margin-left: 0;
+// }
+
+.left_menu.home {
+  .wrap_content {
+    display: block;
+  }
+}

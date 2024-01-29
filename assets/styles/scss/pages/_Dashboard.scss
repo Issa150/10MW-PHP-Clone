@@ -1,0 +1,93 @@
+// @import "Colors";
+
+button {
+  padding: 0.3em 0.7em;
+}
+
+$border_r: 5px;
+
+.main_content {
+  background: #fff;
+  padding: 1em;
+  border-radius: 5px;
+  margin-block: 1em;
+
+  .content_head {
+    > div {
+      display: flex;
+      justify-content: space-between;
+
+      .filters {
+        button {
+          display: flex;
+          justify-content: space-between;
+          color: rgb(83, 83, 83);
+
+          i {
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+
+  //   /////////////////////
+
+  .main_contents {
+    margin-top: 1em;
+
+    .card {
+      width: 300px;
+      outline: 1px solid lightgrey;
+      border-radius: $border_r;
+
+      > img {
+        aspect-ratio: 1/0.4;
+        border-radius: $border_r;
+      }
+
+      .content {
+        padding: 0.5em;
+
+        > div {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        a {
+          padding-inline: 0;
+        }
+
+        div.progression {
+          display: flex;
+          flex-direction: column;
+
+          progress {
+            width: 100%;
+          }
+
+          label {
+            font-size: 0.89rem;
+          }
+        }
+      }
+    }
+  }
+
+  
+  footer {
+    // background: $teal_prime;
+    background:red;
+  }
+}
+
+// ////////////////////////////
+
+.badges_privet {
+  margin-block: 1em;
+  padding: 0.7em;
+  background: #fff;
+}
+
+
+

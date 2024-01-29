@@ -1,0 +1,121 @@
+
+/* General */
+nav{
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
+    box-shadow: 0px 0px 16px rgba(91, 91, 91, 0.801);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+}
+nav ul{
+    display: flex;
+    align-items: center;
+    gap: 1.3em;
+}
+nav ul li {
+    list-style: none;
+}
+/* _________________ */
+/* Specific */
+.left_nav{
+    display: inline-flex;
+}
+.right_nav{
+    display: inline-flex;
+    gap:1.5em;
+}
+
+/* ----------  Sub menu styles   -------------- */
+.menuItem1{
+    position: relative;
+}
+.subMenu{
+    position: absolute;
+    top: 2.3em;
+    /* left: -45%; */
+    right: -10px;
+    width: max(205px,150%);
+    z-index: 2;
+    display: none;
+    background: white;
+    box-shadow: 0 5px 10px hsl(0 0% 0%/.2);
+}
+.subMenu:nth-child(2){
+    left: -30px;
+}
+.subMenu.s{
+    width: 250%;
+}
+.profile_open{
+    display: block;
+}
+.subMenu li{
+    width: 100%;
+    background: transparent;
+    font-size: 1rem;
+    text-align: left;
+    padding: 0.6em 1em;
+}
+.subMenu button{
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    text-align: left;
+    padding-block: 0.6em;
+}
+.sub_menu_profile button:first-child{
+    border-bottom: 1px solid lightgrey;
+}
+.sub_menu_profile button i{
+    margin-right: 10px;
+}
+.subMenu.open{
+    display: block;
+}
+/* _________________ */
+ /* Common */
+.s_Icon{
+    width: 12px;
+}
+img.menu{
+    width: 20px;
+}
+.left_nav button{
+    outline: none;
+    border: none;
+    padding:6px 12px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.089);
+}
+.left_nav button:hover{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: hsla(180, 100%, 25%, 0.205);
+}
+.m_Icon{
+    width: 20px;
+}
+
+.universal_access{
+    width: 40px;
+}
+.dixMentionImg{
+    /* This IMG size does not as big as .m_Icon, so It should get it on size */
+    width: 50px;
+}
+.profile{
+    width: 30px;
+    border-radius: 50%;
+}
+li div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}

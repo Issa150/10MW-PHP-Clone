@@ -1,0 +1,66 @@
+button a {
+  background: transparent;
+  padding: 0;
+  margin-block: 0px;
+  font-size: inherit;
+}
+
+.vocabulary_container {
+  margin-top: 2em;
+}
+.vocabulary_container .fa-circle-exclamation {
+  color: red;
+}
+.vocabulary_container .fa {
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+.vocabulary_container .anim_accord {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.vocabulary_container .accord_head {
+  padding: 1em;
+  font-size: 16px;
+  background: teal;
+  margin-top: 10px;
+}
+.vocabulary_container .accord_body {
+  display: none;
+}
+.vocabulary_container .accord_body.open_accord {
+  display: block;
+}
+.vocabulary_container .accord_body .child_wrap {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  padding: 0.5em;
+}
+.vocabulary_container .accord_body .child_wrap div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+.vocabulary_container .accord_body input {
+  width: 300px;
+  padding: 0.5em 0.7em;
+  font-size: 1.1rem;
+}
+.vocabulary_container button {
+  padding: 1em;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+}
+.vocabulary_container .enregistrer {
+  color: aliceblue;
+  background: teal;
+}

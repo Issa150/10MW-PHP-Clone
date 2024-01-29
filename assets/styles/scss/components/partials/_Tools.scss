@@ -1,0 +1,78 @@
+// @import 'config/Variables';
+
+.outils_contents {
+    padding: 1.2em .8em;
+
+    .title {
+        font-size: 8px;
+        text-align: center;
+        border-top: 5px solid lightgrey;
+        border-bottom: 1px solid lightgrey;
+        padding: 4em 1em;
+
+        span {
+            font-weight: normal;
+            font-size: .9rem;
+        }
+    }
+
+
+
+
+    .contents {
+        padding: 1em 3em;
+
+        >p {
+            text-align: right;
+        }
+
+        .tool_card {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            // display: flex;
+            // justify-content: space-between;
+            margin-left: 3em;
+
+            >i{
+                margin: .8em;
+            }
+            .wrapper {
+                // display: flex;
+                // flex-wrap: wrap;
+                // flex-direction: column;
+                // flex: 1 0 auto;
+                a {
+                    background: transparent;
+                    padding: 0;
+                    text-decoration: underline;
+                }
+
+                ul {
+                    margin-left: 4em;
+                }
+
+                // h2,
+                // p,
+                // li {
+                    // white-space: normal;
+                    // word-break: break-all;
+                    // overflow-wrap: break-word;
+                // }
+            }
+            input{
+                flex: 0 0 auto;
+            }
+
+            &:not(:has(i)) {
+                grid-template-columns: 1fr auto;
+                // background: red;
+            }
+
+            // &:not(:has(i,h2)){
+            //     grid-template-columns: 1fr auto;
+            //     background: red;
+            // }
+        }
+
+    }
+}
