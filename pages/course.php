@@ -3,8 +3,13 @@ include "config/session_security.php";
 // include 'config/db_conn.php';
 // $_SESSION["user"];
 
+// $_SESSION["user"] = "Ali";
+if (isset($_SESSION["user"])){
+    echo $_SESSION["user"];
 
-
+}else{
+    echo "the user is not specified in session";
+}
 include "inc/header.php"; 
 include "inc/nav.php";
 ?>
@@ -28,7 +33,7 @@ include "inc/nav.php";
 
             <?php include "inc/tools.php" ?>
         </section>
-        <?php include "inc/page_footer.php";?>
+        <?php include "inc/footer_page.php"; ?>
     </div>
 
 </main>

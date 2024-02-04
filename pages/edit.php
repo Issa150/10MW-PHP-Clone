@@ -1,40 +1,55 @@
-<?php 
+<?php
 include "config/connection.php";
+include "config/session_security.php";
 //messages varaiable initiation
 $messageSuccessInsertion;
 $messageFailedInsertion;
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $concept = filter_input(INPUT_POST, "concept", FILTER_SANITIZE_SPECIAL_CHARS);
     $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
     $tags = filter_input(INPUT_POST, "tags", FILTER_SANITIZE_SPECIAL_CHARS);
 
 
+
     // empty check
     if (!empty(trim($concept)) && !empty(trim($description))) {
-        $query = "INSERT INTO vocabularies (concept, description, tags) 
-                                    VALUES (?, ?, ?)";
+        if (isset($_SESSION['user'])) {
+            $author = $_SESSION['user'];
+
+            $idUserQuery = "SELECT id FROM users3 WHERE name = '$author'";
+            $resIdUser = mysqli_query($con, $idUserQuery);
+
+            if ($resIdUser && mysqli_num_rows($resIdUser) > 0) {
+                $userId = mysqli_fetch_assoc($resIdUser)['id'];
+                // echo $userId;
+            } else {
+                $userId = null;
+            }
+        } else echo "<script></script";/*$author = "";*/
+        ///////////////
+        $query = "INSERT INTO vocabularies (author,user_id, concept, description, tags) 
+                                    VALUES (?,?, ?, ?, ?)";
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sss", $concept, $description, $tags);
+        mysqli_stmt_bind_param($stmt, "sisss", $author, $userId, $concept, $description, $tags);
         mysqli_stmt_execute($stmt);
 
-        if(mysqli_stmt_affected_rows($stmt) > 0){
+        if (mysqli_stmt_affected_rows($stmt) > 0) {
             $messageSuccessInsertion = "The infos are successfully is saved ✅";
             echo $messageSuccessInsertion;
             header("Location: /glossaires");
-        }else{
+        } else {
             $messageFailedInsertion = "An error occurred while saving the data ❌";
             echo $messageFailedInsertion;
         }
-        
-    }else{
+    } else {
         echo "The inputs could not be empty 🤖";
     }
 }
 
 
-include "inc/header.php" ;
+include "inc/header.php";
 include "inc/nav.php";
 ?>
 <?php  ?>
@@ -145,9 +160,16 @@ include "inc/nav.php";
                             <div></div>
                         </div>
 
-                        <button onClick={savingVocab} class="enregistrer">
-                            Enregistrer
-                        </button>
+                        
+                            <?php
+                             if(isset($_SESSION['user'])){
+                                 echo "<button class='enregistrer'>Enregistrer</button>";
+                            }else{
+                                echo "<button onclick='preventSubmition(e)' class='enregistrer' title='To add a term you have to be loged in!'>Login</button>";
+                            }
+                             
+                             ?>
+                        
                         <button>
                             <a href="/glossaires">See All</a>
                         </button>
@@ -158,7 +180,7 @@ include "inc/nav.php";
                 <div class="arcive_data"></div>
             </div>
         </section>
-        <?php include "inc/page_footer.php";?>
+        <?php include "inc/footer_page.php"; ?>
     </div>
 </main>
 

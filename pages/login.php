@@ -20,7 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result && mysqli_num_rows($result) > 0) {
         $userData = mysqli_fetch_assoc($result);
         if(password_verify($password, $userData["password"])){
-            $_SESSION["user"] = $userData["name"];
+            // $_SESSION["user"] = $userData["name"];
+            $_SESSION["user"] = $name;
+            // $_SESSION['logged_in'] = true;
             // echo "Welcome" . $name;
             header("Location: / ");
             

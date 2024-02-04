@@ -105,3 +105,10 @@ tabHeads.forEach((tab,tabIndex)=>{
         })
     }
 })
+
+//////////////////////////////////////////////////////////////////:
+
+
+function preventSubmition(e){
+    e.preventDefault()
+}

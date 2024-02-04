@@ -6,7 +6,7 @@
   font-size: $sz_icone;
 }
 a {
-  font-size: 1rem;
+  // font-size: .85rem;
   display: block;
   padding: 0.4em 0.6em;
   background: #fff;
@@ -39,6 +39,7 @@ i {
   color: #fff;
   display: grid;
   grid-template-rows: auto 1fr;
+  box-shadow: 0 0 5px lightgrey;
 
   // ////////////////////////////
   .wrap_tabs {
@@ -123,7 +124,6 @@ i {
           img {
             width: 60px;
             border-radius: 50%;
-            aspect-ratio: 1/1;
           }
           li {
             font-weight: bold;
@@ -135,8 +135,15 @@ i {
           .right {
             padding-left: 1em;
 
-            ul li:last-child span a {
-              font-size: 13px;
+            ul{
+              word-break: break-word;
+              
+              li:last-child span a {
+                font-size: 13px;
+                padding: 0;
+                margin: 0;
+                word-wrap: break-all;
+              }
             }
           }
         }

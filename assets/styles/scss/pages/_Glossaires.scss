@@ -122,6 +122,7 @@
             padding: 1em;
             font-family: sans-serif;
             display: flex;
+            outline: 1px solid darken($teal_prime, $sec_teal_num);
 
             .profile {
               flex: 0 0 clamp(50px, 30%, 130px);
@@ -136,7 +137,7 @@
 
               p {
                 margin-top: 0.7em;
-                font-weight: bolder;
+                // font-weight: bolder;
                 text-align: center;
               }
             }
@@ -268,6 +269,7 @@
     }
   }
 
+  // @import "../components/Footer.page";
   footer {
     background: $teal_prime;
   }

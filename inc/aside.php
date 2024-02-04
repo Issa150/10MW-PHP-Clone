@@ -33,10 +33,9 @@ mysqli_close($con);
 
         <div class="wrap_card_info">
           <div class="left">
-            <!-- <img src="../../assets/imgs/imgPlaceholder01.png" alt="prifile picture" /> -->
-            <img src="data:image/jpeg;base64,<?=
-                       $imageProfile ? base64_encode($imageProfile) : "../../assets/imgs/imgPlaceholder01.png"
-                      ?>" alt="prifile picture" />
+            <img class="profile" src="<?=
+                                      (isset($imageProfile)) ? ("data:image/jpeg;base64," . base64_encode($imageProfile)) : "../../assets/imgs/imgPlaceholder01.png"
+                                      ?>" alt="Avatar" />
           </div>
           <div class="right">
             <h2>
@@ -45,7 +44,7 @@ mysqli_close($con);
             <ul>
               <li>Pays: <span><?= $country; ?></span></li>
               <li>Ville: <span><?= $city; ?></span></li>
-              <li>Adresse de courriel: <span><a href="#"><?= $email; ?></a></span></li>
+              <li>Adresse de courriel: <span><a class="mail" href="#"><?= $email; ?></a></span></li>
             </ul>
           </div>
         </div>

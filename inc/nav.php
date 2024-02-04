@@ -1,6 +1,11 @@
 <?php
 include "config/connection.php";
 include "config/functions.php";
+
+
+// if (isset($pageGlossaires) && $pageGlossaires === "pageGlossaires"){
+//     include_once "config/session_security.php";
+// }
 ?>
 
 
@@ -48,7 +53,7 @@ include "config/functions.php";
                 </p>
                 <!-- <img class='profile' src="assets/icons/f3.jpg" alt="" /> -->
                 <!-- <img class='profile' src="data:image/jpeg;base67,<?php //$imageProfile ? base64_encode($imageProfile) : "assets/icons/f3.jpg"?>" alt="" /> -->
-                <img class='profile' src="data:image/jpeg;base64,<?= $imageProfile ? base64_encode($imageProfile) : "../../assets/imgs/imgPlaceholder01.png"
+                <img class='profile' src="<?= (isset($imageProfile)) ? ("data:image/jpeg;base64,". base64_encode($imageProfile)) : "../../assets/imgs/imgPlaceholder01.png";
                       ?>" alt="" />
 
                 <img class='s_Icon' src="assets/icons/sort-down-solid.svg" alt="" />

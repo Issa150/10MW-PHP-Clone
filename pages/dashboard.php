@@ -84,7 +84,7 @@
                 </div>
             </div>
         </section>
-        <?php include "inc/page_footer.php";?>
+        <?php include "inc/footer_page.php"; ?>
     </div>
 </main>
 

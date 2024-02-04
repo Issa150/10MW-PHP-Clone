@@ -9,14 +9,16 @@
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  
     );
 */
-include "config/connection.php";
-$myVocabs;
-$query = "SELECT * FROM vocabularies ORDER BY created_at DESC LIMIT 3";
-$res = mysqli_query($con, $query);
 
-include "config/session_security.php";
+include "config/connection.php";
+// include "config/functions.php";
+$pageGlossaires = "pageGlossaires";
+
 include "inc/header.php";
+// include "config/session_security.php";
+session_start();
 include "inc/nav.php";
+
 ?>
 <?php  ?>
 <!-- ---------------- -->
@@ -118,7 +120,6 @@ include "inc/nav.php";
                         <!-- {/* Content Tab */} -->
                         <!-- {/* ______________ */} -->
                         <div class="wrap_content show_content">
-                            <!-- {/* <a href="#" onClick={outilsHandler}><img src="../src/assets/icons/briefcase.png" alt="icon academy" /> Outils & ressorces</a> */} -->
                             <div class="archive_head">
                                 <p>Consultez le glossaire à l'aide de cet index</p>
                                 <div class="alphabets">
@@ -160,20 +161,35 @@ include "inc/nav.php";
 
                             <div class="archive_display">
                                 <?php
+
+                                $query = "SELECT vocabularies.*, users3.image_profile
+                                    FROM vocabularies
+                                    LEFT JOIN users3
+                                    ON vocabularies.user_id = users3.id ORDER BY concept LIMIT 10";
+                                $res = mysqli_query($con, $query);
+
                                 if ($res && mysqli_num_rows($res) > 0) {
                                     $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                     foreach ($rows as $row) :
-                                        $tags = preg_split('/\s+/', $row['tags'], -1, PREG_SPLIT_NO_EMPTY);
+                                        $tags = explode(' ', $row['tags']);
                                         $tagList = '';
                                         foreach ($tags as $tag) {
-                                            $tagList .= '<span>' . $tag . '</span>';
+                                            if (!empty($tag)) {
+                                                $tagList .= '<span>' . trim($tag) . '</span>';
+                                            } else {
+                                                $tagList = "...";
+                                            }
                                         }
+
                                 ?>
                                         <div class="vocab_card">
                                             <div class="profile">
-                                                <img src="../assets/imgs/profile-placeholder.jpg" alt="" />
+                                                <img src="<?= (isset($row['image_profile'])) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg"
+                                                            ?>" alt="" />
+
                                                 <p>
-                                                    author: <?= $row["author"] ?>
+                                                    <strong>Author:</strong> <?= ucfirst($row["author"])
+                                                                                ?>
                                                 </p>
                                             </div>
                                             <div class="content_container">
@@ -187,13 +203,16 @@ include "inc/nav.php";
                                                     </small>
                                                 </div>
                                                 <div class="actions">
-                                                    <!-- {currentUser.username &&
-                                        (vocab.author === currentUser.username ||
-                                        currentUser.roll === "admin") ? ( -->
-                                                    <button>Remove</button>
-                                                    <!-- ) : ( -->
-                                                    <!-- "" -->
-                                                    <!-- )} -->
+                                                    <?php
+                                                    if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
+                                                        echo "<button>Remove</button><br>";
+                                                    } else {
+                                                        echo "";
+                                                    }
+
+                                                    ?>
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -201,6 +220,8 @@ include "inc/nav.php";
                                 } ?>
                             </div>
                         </div>
+
+                        <!-- Consulter par Catègorie -->
                         <!-- {/* ______________ */} -->
                         <div class="wrap_content">
                             <div class="message">
@@ -208,14 +229,71 @@ include "inc/nav.php";
                                 <p>Pas de contenue encore!</p>
                                 <p>Contacter Issa pour avoir plus de contenues</p>
                             </div>
+                            
                         </div>
 
+                        <!-- Consulter par Dates -->
                         <!-- {/* ______________ */} -->
                         <div class="wrap_content">
                             <div class="message">
-                                <h3>Consulter par Dates</h3>
-                                <p>Pas de contenue encore!</p>
-                                <p>Contacter Issa pour avoir plus de contenues</p>
+                                <!-- <h3>Consulter par Dates</h3> -->
+                            </div>
+                            <div class="archive_display">
+                                <?php
+
+                                $query = "SELECT vocabularies.*, users3.image_profile FROM vocabularies LEFT JOIN users3 ON vocabularies.user_id = users3.id ORDER BY created_at DESC LIMIT 5";
+                                $res = mysqli_query($con, $query);
+
+                                if ($res && mysqli_num_rows($res) > 0) {
+                                    $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                                    foreach ($rows as $row) :
+                                        $tags = explode(' ', $row['tags']);
+                                        $tagList = '';
+                                        foreach ($tags as $tag) {
+                                            if (!empty($tag)) {
+                                                $tagList .= '<span>' . trim($tag) . '</span>';
+                                            } else {
+                                                $tagList = "...";
+                                            }
+                                        }
+
+                                ?>
+                                        <div class="vocab_card">
+                                            <div class="profile">
+                                                <img src="<?= (isset($row['image_profile'])) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg"
+                                                            ?>" alt="" />
+
+                                                <p>
+                                                    <strong>Author:</strong> <?= ucfirst($row["author"])
+                                                                                ?>
+                                                </p>
+                                            </div>
+                                            <div class="content_container">
+                                                <div class="content">
+                                                    <p>
+                                                        <b><?= $row["concept"] ?></b>
+                                                    </p>
+                                                    <p><?= $row["description"] ?></p>
+                                                    <small>
+                                                        <?= $tagList ?>
+                                                    </small>
+                                                </div>
+                                                <div class="actions">
+                                                    <?php
+                                                    if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
+                                                        echo "<button>Remove</button><br>";
+                                                    } else {
+                                                        echo "";
+                                                    }
+
+                                                    ?>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php endforeach;
+                                } ?>
                             </div>
                         </div>
 
@@ -231,9 +309,10 @@ include "inc/nav.php";
                 </div>
             </div>
         </section>
-        <?php include "inc/page_footer.php";?>
+        <?php include "inc/footer_page.php"; ?>
     </div>
 </main>
 
 <!-- ---------------- -->
-<?php include "inc/footer.php" ?>
+<?php include "inc/footer.php"
+?>
