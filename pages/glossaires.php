@@ -19,6 +19,64 @@ include "inc/header.php";
 session_start();
 include "inc/nav.php";
 
+
+function getVocabularies($pdo) {
+    $query = "SELECT vocabularies.*, users3.image_profile
+                                    FROM vocabularies
+                                    LEFT JOIN users3
+                                    ON vocabularies.user_id = users3.id ORDER BY concept LIMIT 10";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $vocabList = '';
+    foreach ($rows as $row) {
+        $tags = explode(' ', $row['tags']);
+        $tagList = '';
+        foreach ($tags as $tag) {
+            if (!empty($tag)) {
+                $tagList .= '<span>' . trim($tag) . '</span>';
+            } else {
+                $tagList = "...";
+            }
+        }
+
+        $vocabList .= '
+            <div class="vocab_card">
+                <div class="profile">
+                    <img src="' . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg") . '" alt="" />
+
+                    <p>
+                        <strong>Author:</strong> ' . ucfirst($row["author"]) . '
+                    </p>
+                </div>
+                <div class="content_container">
+                    <div class="content">
+                        <p>
+                            <b>' . $row["concept"] . '</b>
+                        </p>
+                        <p>' . $row["description"] . '</p>
+                        <small>' . $tagList . '</small>
+                    </div>
+                    <div class="actions">';
+
+                        if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
+                            $vocabList .= '<button>Remove</button><br>';
+                        }
+
+                        $vocabList .= '
+                    </div>
+                </div>
+            </div>
+        ';
+    }
+
+    return $vocabList;
+}
+
+
+
+
 ?>
 <?php  ?>
 <!-- ---------------- -->
@@ -161,54 +219,55 @@ include "inc/nav.php";
 
                             <div class="archive_display">
                                 <?php
+                                    echo getVocabularies($pdo);
+                                    
+                                // $query = "SELECT vocabularies.*, users3.image_profile
+                                //     FROM vocabularies
+                                //     LEFT JOIN users3
+                                //     ON vocabularies.user_id = users3.id ORDER BY concept LIMIT 10";
+                                // $res = mysqli_query($con, $query);
 
-                                $query = "SELECT vocabularies.*, users3.image_profile
-                                    FROM vocabularies
-                                    LEFT JOIN users3
-                                    ON vocabularies.user_id = users3.id ORDER BY concept LIMIT 10";
-                                $res = mysqli_query($con, $query);
-
-                                if ($res && mysqli_num_rows($res) > 0) {
-                                    $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
-                                    foreach ($rows as $row) :
-                                        $tags = explode(' ', $row['tags']);
-                                        $tagList = '';
-                                        foreach ($tags as $tag) {
-                                            if (!empty($tag)) {
-                                                $tagList .= '<span>' . trim($tag) . '</span>';
-                                            } else {
-                                                $tagList = "...";
-                                            }
-                                        }
+                                // if ($res && mysqli_num_rows($res) > 0) {
+                                //     $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                                //     foreach ($rows as $row) :
+                                //         $tags = explode(' ', $row['tags']);
+                                //         $tagList = '';
+                                //         foreach ($tags as $tag) {
+                                //             if (!empty($tag)) {
+                                //                 $tagList .= '<span>' . trim($tag) . '</span>';
+                                //             } else {
+                                //                 $tagList = "...";
+                                //             }
+                                //         }
 
                                 ?>
                                         <div class="vocab_card">
                                             <div class="profile">
-                                                <img src="<?= (isset($row['image_profile'])) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg"
+                                                <img src="<?php //(isset($row['image_profile'])) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg"
                                                             ?>" alt="" />
 
                                                 <p>
-                                                    <strong>Author:</strong> <?= ucfirst($row["author"])
+                                                    <strong>Author:</strong> <?php ///ucfirst($row["author"])
                                                                                 ?>
                                                 </p>
                                             </div>
                                             <div class="content_container">
                                                 <div class="content">
                                                     <p>
-                                                        <b><?= $row["concept"] ?></b>
+                                                        <b><?php //$row["concept"] ?></b>
                                                     </p>
-                                                    <p><?= $row["description"] ?></p>
+                                                    <p><?php ///$row["description"] ?></p>
                                                     <small>
-                                                        <?= $tagList ?>
+                                                        <?php //$tagList ?>
                                                     </small>
                                                 </div>
                                                 <div class="actions">
                                                     <?php
-                                                    if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
-                                                        echo "<button>Remove</button><br>";
-                                                    } else {
-                                                        echo "";
-                                                    }
+                                                    // if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
+                                                    //     echo "<button>Remove</button><br>";
+                                                    // } else {
+                                                    //     echo "";
+                                                    // }
 
                                                     ?>
 
@@ -216,8 +275,8 @@ include "inc/nav.php";
                                                 </div>
                                             </div>
                                         </div>
-                                <?php endforeach;
-                                } ?>
+                                <?php// endforeach;
+                                //} ?>
                             </div>
                         </div>
 

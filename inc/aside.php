@@ -2,7 +2,7 @@
 include "config/connection.php";
 include "config/functions.php";
 
-mysqli_close($con);
+// mysqli_close($con);
 // $options=[
 //   'cost'=>12
 // ];

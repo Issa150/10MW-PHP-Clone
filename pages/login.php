@@ -6,38 +6,68 @@ include "config/connection.php";
 include "config/session_security.php";
 
 
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $name = strtolower( filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS));
+//     $password = $_POST["password"];
+//     // echo $name;
+//     $options = [
+//         'cost' => 12
+//     ];
+//     // $passwordHash = password_hash($password, PASSWORD_DEFAULT, $options);
+
+//     $query = "SELECT * FROM users3 WHERE name = '$name' limit 1";
+//     $result = mysqli_query($con, $query);
+//     if ($result && mysqli_num_rows($result) > 0) {
+//         $userData = mysqli_fetch_assoc($result);
+//         if(password_verify($password, $userData["password"])){
+//             // $_SESSION["user"] = $userData["name"];
+//             $_SESSION["user"] = $name;
+//             // $_SESSION['logged_in'] = true;
+//             // echo "Welcome" . $name;
+//             header("Location: / ");
+            
+//         }else{
+//             echo "Invalid password";
+//         }
+//     }else{
+//         echo "Name is not valid";
+//     }
+// }
+// else{
+//     if(isset($_SESSION["user"])){
+//         unset($_SESSION["user"]);
+//         echo "Considered as deconection!";
+//     }else{
+
+//     }
+// }
+//////////////////////////////////////////////////////////:::
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = strtolower( filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS));
     $password = $_POST["password"];
-    // echo $name;
+
     $options = [
         'cost' => 12
     ];
-    // $passwordHash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-    $query = "SELECT * FROM users3 WHERE name = '$name' limit 1";
-    $result = mysqli_query($con, $query);
-    if ($result && mysqli_num_rows($result) > 0) {
-        $userData = mysqli_fetch_assoc($result);
-        if(password_verify($password, $userData["password"])){
-            // $_SESSION["user"] = $userData["name"];
-            $_SESSION["user"] = $name;
-            // $_SESSION['logged_in'] = true;
-            // echo "Welcome" . $name;
-            header("Location: / ");
-            
-        }else{
-            echo "Invalid password";
-        }
-    }else{
-        echo "Name is not valid";
+    $query = "SELECT * FROM users3 WHERE name = :name LIMIT 1";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':name', $name);
+    $stmt->execute();
+    $userData = $stmt->fetch();
+
+    if ($userData && password_verify($password, $userData["password"])) {
+        $_SESSION["user"] = $name;
+        header("Location: / ");
+    } else {
+        echo "Invalid password";
     }
-}
-else{
-    if(isset($_SESSION["user"])){
+} else {
+    if (isset($_SESSION["user"])) {
         unset($_SESSION["user"]);
         echo "Considered as deconection!";
-    }else{
+    } else {
 
     }
 }
