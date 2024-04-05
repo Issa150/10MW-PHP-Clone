@@ -1,34 +1,50 @@
 // @import '../../pages/scss/Colors';
-i{
+i {
     margin-right: 1em;
 }
 
-footer{
-    display: flex;
-    justify-content: space-evenly;
-    background: darken($teal_prime, $sec_teal_num);
-    color: #fff;
-    padding-block: 1.3em;
-    position: relative;
-
-    a{
-        padding: 0;
-        background: transparent;
+footer {
+    background: $teal_prime;
+    .wrapper {
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-evenly;
+        // background: darken($teal_prime, $sec_teal_num);
         color: #fff;
-    }
-    .colomn{
-        flex-basis: 35%;
+        padding-block: 1.3em;
+        position: relative;
 
-        ul{
-            padding-left: 2.5em;
+
+
+        width: max(800px, 1000px);
+        margin-inline: auto;
+    
+    
+        a {
+            padding: 0;
+            background: transparent;
+            color: #fff;
         }
-        
-        .social_medias{
-            display: inline-flex;
-            gap: 1em;
+    
+        .colomn {
+            flex-basis: 35%;
+    
+            ul {
+                padding-left: 2.5em;
+            }
+    
+            .social_medias {
+                display: inline-flex;
+                gap: 1em;
+            }
+    
+            >:last-child {
+                margin-top: 3em;
+            }
         }
-        >:last-child{
-            margin-top: 3em;
+        .colomn:nth-child(2){
+            transform: translateX(3em);
         }
     }
+
 }

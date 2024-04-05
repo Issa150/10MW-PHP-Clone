@@ -2,45 +2,12 @@
 /*
 
 */
-include "config/connection.php";
-include "config/session_security.php";
+include_once "../config/variables.php";
+include "../config/connection.php";
+include "../config/session_security.php";
 
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $name = strtolower( filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS));
-//     $password = $_POST["password"];
-//     // echo $name;
-//     $options = [
-//         'cost' => 12
-//     ];
-//     // $passwordHash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-//     $query = "SELECT * FROM users3 WHERE name = '$name' limit 1";
-//     $result = mysqli_query($con, $query);
-//     if ($result && mysqli_num_rows($result) > 0) {
-//         $userData = mysqli_fetch_assoc($result);
-//         if(password_verify($password, $userData["password"])){
-//             // $_SESSION["user"] = $userData["name"];
-//             $_SESSION["user"] = $name;
-//             // $_SESSION['logged_in'] = true;
-//             // echo "Welcome" . $name;
-//             header("Location: / ");
-            
-//         }else{
-//             echo "Invalid password";
-//         }
-//     }else{
-//         echo "Name is not valid";
-//     }
-// }
-// else{
-//     if(isset($_SESSION["user"])){
-//         unset($_SESSION["user"]);
-//         echo "Considered as deconection!";
-//     }else{
-
-//     }
-// }
 //////////////////////////////////////////////////////////:::
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -57,22 +24,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $userData = $stmt->fetch();
 
-    if ($userData && password_verify($password, $userData["password"])) {
-        $_SESSION["user"] = $name;
-        header("Location: / ");
+    if ($userData){
+        if(password_verify($password, $userData["password"])) {
+            $_SESSION["user10MW"] = $name;
+            header("Location: ". SITE_PATH);
+        }else{
+            echo "Password is incorrect!";
+        }
     } else {
-        echo "Invalid password";
+        echo "Name is not valid !";
     }
 } else {
-    if (isset($_SESSION["user"])) {
-        unset($_SESSION["user"]);
+    if (isset($_SESSION["user10MW"])) {
+        unset($_SESSION["user10MW"]);
         echo "Considered as deconection!";
     } else {
 
     }
 }
-
-include "inc/header.php";
+$title = "Login";
+include "../inc/header.php";
 ?>
 <!-- ---------------- -->
 
@@ -81,11 +52,11 @@ include "inc/header.php";
     <div class="demo_wrapper">
         <span>Demo</span>
         <div>
-            <a href="/">Accès sans connection</a>
+            <a href="<?= SITE_PATH?>">Accès sans connection</a>
         </div>
     </div>
     <div class="login_wrapper">
-        <img src="../assets/imgs/big-logo-removebg.png" alt="" />
+        <img src="assets/imgs/big-logo-removebg.png" alt="" />
 
         <form class="content" method="post">
             <div class="message_container">
@@ -117,4 +88,4 @@ include "inc/header.php";
 
 
 <!-- ---------------- -->
-<?php include "inc/footer.php" ?>
+<?php include "../inc/footer.php" ?>

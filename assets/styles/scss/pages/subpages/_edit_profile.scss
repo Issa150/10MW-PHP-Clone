@@ -1,0 +1,22 @@
+.page.edit_profile {
+  grid-template-columns: auto;
+
+  .main_wrapp {
+    .main_board {
+      box-shadow: 0 0 10px rgba(128, 128, 128, 0.337);
+        .accordion_container{
+
+            .child_wrap {
+              .uploader_card {
+                i.fa-cloud-arrow-up {
+                  font-size: 3rem;
+                }
+                input[type="file"]{
+                    display: none;
+                }
+              }
+            }
+        }
+    }
+  }
+}

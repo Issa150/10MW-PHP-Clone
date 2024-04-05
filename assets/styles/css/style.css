@@ -55,11 +55,6 @@ img {
   top: 1.7em;
   left: 1.7em;
 }
-.page_container .page .main_wrapp .main_board .hero_of_main .wrap:has(img, i) {
-  position: absolute;
-  bottom: 1.7em;
-  right: 1.7em;
-}
 .page_container .page .main_wrapp .main_board .hero_of_main h1 {
   font-size: 2rem;
   padding: 0.16em 0.28em;
@@ -69,6 +64,11 @@ img {
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 5px;
+}
+.page_container .page .main_wrapp .main_board .hero_of_main .wrap:has(i) {
+  position: absolute;
+  bottom: 1.7em;
+  right: 1.7em;
 }
 .page_container .page .main_wrapp .main_board .hero_of_main img,
 .page_container .page .main_wrapp .main_board .hero_of_main i {
@@ -118,6 +118,96 @@ img {
 }
 .page_container .page .main_wrapp .main_board .outils_contents .contents .tool_card:not(:has(i)) {
   grid-template-columns: 1fr auto;
+}
+.page_container .page .main_wrapp i {
+  margin-right: 1em;
+}
+.page_container .page .main_wrapp footer {
+  background: #005259;
+}
+.page_container .page .main_wrapp footer .wrapper {
+  margin-inline: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  color: #fff;
+  padding-block: 1.3em;
+  position: relative;
+  width: 1000px;
+  margin-inline: auto;
+}
+.page_container .page .main_wrapp footer .wrapper a {
+  padding: 0;
+  background: transparent;
+  color: #fff;
+}
+.page_container .page .main_wrapp footer .wrapper .colomn {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+}
+.page_container .page .main_wrapp footer .wrapper .colomn ul {
+  padding-left: 2.5em;
+}
+.page_container .page .main_wrapp footer .wrapper .colomn .social_medias {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 1em;
+}
+.page_container .page .main_wrapp footer .wrapper .colomn > :last-child {
+  margin-top: 3em;
+}
+.page_container .page .main_wrapp footer .wrapper .colomn:nth-child(2) {
+  -webkit-transform: translateX(3em);
+          transform: translateX(3em);
+}
+.page_container .page.Profile i {
+  margin-right: 1em;
+}
+.page_container .page.Profile footer {
+  background: #005259;
+}
+.page_container .page.Profile footer .wrapper {
+  margin-inline: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  color: #fff;
+  padding-block: 1.3em;
+  position: relative;
+  width: 1000px;
+  margin-inline: auto;
+}
+.page_container .page.Profile footer .wrapper a {
+  padding: 0;
+  background: transparent;
+  color: #fff;
+}
+.page_container .page.Profile footer .wrapper .colomn {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+}
+.page_container .page.Profile footer .wrapper .colomn ul {
+  padding-left: 2.5em;
+}
+.page_container .page.Profile footer .wrapper .colomn .social_medias {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 1em;
+}
+.page_container .page.Profile footer .wrapper .colomn > :last-child {
+  margin-top: 3em;
+}
+.page_container .page.Profile footer .wrapper .colomn:nth-child(2) {
+  -webkit-transform: translateX(3em);
+          transform: translateX(3em);
 }
 
 /* General */
@@ -263,19 +353,22 @@ img.menu {
   width: 20px;
 }
 
-.left_nav button {
+.left_nav button.asiderBtn {
   outline: none;
   border: none;
-  padding: 6px 12px;
+  padding: 6px;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.089);
 }
-
-.left_nav button:hover {
+.left_nav button.asiderBtn:hover {
   cursor: pointer;
   outline: none;
   border: none;
   background-color: hsla(180, 100%, 25%, 0.205);
+}
+.left_nav button.asiderBtn i {
+  font-size: 1.3em;
+  margin: 0;
 }
 
 .m_Icon {
@@ -333,7 +426,7 @@ i {
 
 .left_menu,
 .left_menu.home {
-  border-radius: 5px;
+  border-top-right-radius: 5px;
   background: #005259;
   overflow: hidden;
   color: #fff;
@@ -475,48 +568,6 @@ i {
   display: block;
 }
 
-i {
-  margin-right: 1em;
-}
-
-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  background: #003135;
-  color: #fff;
-  padding-block: 1.3em;
-  position: relative;
-}
-footer a {
-  padding: 0;
-  background: transparent;
-  color: #fff;
-}
-footer .colomn {
-  -ms-flex-preferred-size: 35%;
-      flex-basis: 35%;
-}
-footer .colomn ul {
-  padding-left: 2.5em;
-}
-footer .colomn .social_medias {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  gap: 1em;
-}
-footer .colomn > :last-child {
-  margin-top: 3em;
-}
-
-.space {
-  height: 300px;
-}
-
 .wrap:has(h1) {
   position: absolute;
   top: 1.7em;
@@ -537,7 +588,11 @@ h1 {
   text-align: center;
 }
 
-button {
+.coursPage .main_wrapp footer {
+  background: #003135 !important;
+}
+
+button:not(.asiderBtn) {
   padding: 0.3em 0.7em;
 }
 
@@ -786,31 +841,35 @@ footer {
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_tab_heads {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  background: #005259;
+  gap: 10px;
+  padding: 10px 10px 0 10px;
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_tab_heads .tab_head {
-  background: #00444a;
+  background: #006973;
   padding: 0.4em;
   color: #fff;
   text-align: center;
   cursor: pointer;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-box-shadow: 0 0px 10px rgb(0, 49, 52);
+          box-shadow: 0 0px 10px rgb(0, 49, 52);
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_tab_heads .tab_head:hover {
-  background: #002326;
+  background: #008691;
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_tab_heads .tab_head.active {
-  background: #003135;
-  color: #fff;
-  font-weight: 500;
+  background: white;
+  color: #005259;
+  font-weight: bolder;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_content {
-  background: #005259;
   padding: 0.4em;
   display: none;
-  color: #fff;
-  border-top: 6px solid #003135;
-  -webkit-box-shadow: inset 0 10px 15px #003135;
-          box-shadow: inset 0 10px 15px #003135;
+  color: rgb(29, 29, 29);
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_content .message {
   color: #000;
@@ -820,15 +879,15 @@ footer {
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_head {
   padding: 1em;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .alphabets {
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_head .alphabets {
   text-align: center;
   margin-block: 1em;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .alphabets * {
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_head .alphabets * {
   padding: 0 0.4em;
   border-right: 2px solid lightgrey;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .alphabets *:last-child {
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_head .alphabets *:last-child {
   border-right: none;
   font-weight: bold;
 }
@@ -837,102 +896,77 @@ footer {
   border-bottom: 1px solid rgba(211, 211, 211, 0.576);
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card {
-  margin-block: 10px;
+  margin: 1em 0;
+  background: rgb(239, 242, 243);
+  -webkit-box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+          box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+}
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_head {
+  padding: 1.5em;
+  background: rgb(208, 231, 233);
+  color: #005259;
+}
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body {
   padding: 1em;
-  font-family: sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  outline: 1px solid #003135;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .profile {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 clamp(50px, 30%, 130px);
-          flex: 0 0 clamp(50px, 30%, 130px);
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .tag_wrap {
+  margin-block: 0.8em;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .profile img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 1/1;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .tag_wrap > span {
+  font-weight: bolder;
+  color: #303030;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .profile p {
-  margin-top: 0.7em;
-  text-align: center;
-}
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container {
-  padding: 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container small {
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .tag_wrap small {
   margin-top: 5px;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container small span {
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .tag_wrap small span {
   font-style: italic;
-  background-color: lightgrey;
+  background: rgb(208, 231, 233);
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  padding: 5px;
+  padding: 2px 5px;
   color: #000;
   border-radius: 50px;
   margin-inline: 3px;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container .actions {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 max-content;
-          flex: 0 0 max-content;
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .meta_data {
+  padding-top: 1em;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container .actions button {
-  background: #003135;
-  color: #fff;
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .meta_data .profile {
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.179);
+          box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.179);
+}
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .meta_data .middle_wrapper .meta_title {
+  color: #303030;
   font-weight: bolder;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  padding: 0.6em 1em;
-  font-size: 1rem;
-  -webkit-box-shadow: 0 0 10px #003b40;
-          box-shadow: 0 0 10px #003b40;
-  -webkit-transition: 0.15s;
-  transition: 0.15s;
 }
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .content_container .actions button:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  background: #00818c;
-  color: #003135;
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .meta_data .actions .icons_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .meta_data .actions .icons_wrapper i {
+  margin: 0;
+}
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card .vocab_body .meta_data .actions p {
+  text-align: right;
+}
+.glossaire .glossaires_wrapper .glossaires_archive .wrap_content .archive_display .vocab_card a {
+  background: transparent;
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_content img {
   width: 25px;
   margin-right: 5px;
-}
-.glossaire .glossaires_wrapper .glossaires_archive .wrap_content a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 .glossaire .glossaires_wrapper .glossaires_archive .wrap_content .profile_data {
   display: grid;
@@ -1027,7 +1061,7 @@ button a {
   grid-template-columns: 170px 1fr;
   padding: 0.5em;
 }
-.vocabulary_container .accord_body .child_wrap div {
+.vocabulary_container .accord_body .child_wrap div:has(label) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1054,4 +1088,121 @@ button a {
 .vocabulary_container .enregistrer {
   color: aliceblue;
   background: teal;
+  margin-left: 0;
+}
+
+.highlight-yellow {
+  background-color: yellow;
+}
+
+.highlight-green {
+  background-color: green;
+}
+
+.highlight-blue {
+  background-color: blue;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.page.Profile, .page.edit_profile {
+  grid-template-columns: auto;
+}
+.page.Profile .main_wrapp, .page.edit_profile .main_wrapp {
+  width: 1100px;
+  margin-inline: auto;
+  overflow: visible;
+}
+.page.Profile .main_wrapp .hero_of_main, .page.edit_profile .main_wrapp .hero_of_main {
+  height: 170px;
+}
+.page.Profile .main_wrapp .hero_of_main .wrap:has(.profile), .page.edit_profile .main_wrapp .hero_of_main .wrap:has(.profile) {
+  background-color: #005259;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+.page.Profile .main_wrapp .hero_of_main .wrap:has(.profile) .profile, .page.edit_profile .main_wrapp .hero_of_main .wrap:has(.profile) .profile {
+  width: 70px;
+}
+.page.Profile .main_wrapp .hero_of_main .wrap:has(button), .page.edit_profile .main_wrapp .hero_of_main .wrap:has(button) {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  top: 1.7em;
+  right: 1.7em;
+}
+.page.Profile .main_wrapp .profile_infos, .page.edit_profile .main_wrapp .profile_infos {
+  padding: 1em;
+  -webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
+}
+.page.Profile .main_wrapp .profile_infos .card_info, .page.edit_profile .main_wrapp .profile_infos .card_info {
+  padding: 1em;
+  border: 1px solid lightgrey;
+  margin-bottom: 1em;
+  width: 100%;
+  display: inline-block;
+}
+.page.Profile .main_wrapp .profile_infos .card_info h3, .page.edit_profile .main_wrapp .profile_infos .card_info h3 {
+  font-size: 20px;
+  font-weight: 300;
+}
+.page.Profile .main_wrapp .profile_infos .card_info a.btn, .page.edit_profile .main_wrapp .profile_infos .card_info a.btn {
+  text-align: right;
+}
+.page.Profile .main_wrapp .profile_infos .card_info a, .page.edit_profile .main_wrapp .profile_infos .card_info a {
+  text-decoration: underline;
+  color: blue;
+}
+.page.Profile .main_wrapp .profile_infos .card_info dl, .page.edit_profile .main_wrapp .profile_infos .card_info dl {
+  margin-block: 1em;
+}
+.page.Profile .main_wrapp .profile_infos .card_info dl dt, .page.edit_profile .main_wrapp .profile_infos .card_info dl dt {
+  font-weight: bolder;
+}
+.page.Profile .main_wrapp .profile_infos .card_info dl dd, .page.edit_profile .main_wrapp .profile_infos .card_info dl dd {
+  overflow-wrap: anywhere;
+}
+.page.Profile .main_wrapp .profile_infos .card_info dl dd span, .page.edit_profile .main_wrapp .profile_infos .card_info dl dd span {
+  font-style: italic;
+  background: rgb(208, 231, 233);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 0px 5px 2px 5px;
+  color: #000;
+  border-radius: 50px;
+  margin-inline: 3px;
+}
+
+.page.edit_profile {
+  grid-template-columns: auto;
+}
+.page.edit_profile .main_wrapp .main_board {
+  -webkit-box-shadow: 0 0 10px rgba(128, 128, 128, 0.337);
+          box-shadow: 0 0 10px rgba(128, 128, 128, 0.337);
+}
+.page.edit_profile .main_wrapp .main_board .accordion_container .child_wrap .uploader_card i.fa-cloud-arrow-up {
+  font-size: 3rem;
+}
+.page.edit_profile .main_wrapp .main_board .accordion_container .child_wrap .uploader_card input[type=file] {
+  display: none;
 }

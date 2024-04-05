@@ -1,6 +1,5 @@
 <?php
-include "config/connection.php";
-include "config/functions.php";
+
 
 // mysqli_close($con);
 // $options=[
@@ -34,7 +33,7 @@ include "config/functions.php";
         <div class="wrap_card_info">
           <div class="left">
             <img class="profile" src="<?=
-                                      (isset($imageProfile)) ? ("data:image/jpeg;base64," . base64_encode($imageProfile)) : "../../assets/imgs/imgPlaceholder01.png"
+                                      (isset($imageProfile)) ? ("data:image/jpeg;base64," . base64_encode($imageProfile)) : SITE_PATH."assets/imgs/imgPlaceholder01.png"
                                       ?>" alt="Avatar" />
           </div>
           <div class="right">
@@ -58,9 +57,8 @@ include "config/functions.php";
       <i class="fa-solid fa-graduation-cap"></i>
       Développeur Web & Web Mobile
     </a>
-    <a href="#"><img src="../assets/icons/badge-check.png" alt="icon academy" /> Badges</a>
-    <a href="#"><img src="../assets/icons/document-text.png" alt="icon academy" /> Notes</a>
-
-    <a href='/dashboard'><img src="../assets/icons/home.png" alt="icon academy" />Tableau de bord</a>
+    <a href="#"><img src="<?= SITE_PATH?>assets/icons/badge-check.png" alt="icon academy" /> Badges</a>
+    <a href="#"><img src="<?= SITE_PATH?>assets/icons/document-text.png" alt="icon academy" /> Notes</a>
+    <a href='/dashboard'><img src="<?= SITE_PATH?>assets/icons/home.png" alt="icon academy" />Tableau de bord</a>
   </div>
 </div>

@@ -64,7 +64,7 @@
             <i class="fa-solid fa-file-pdf"></i>
 
             <div class="wrapper">
-                <a href="/glossaires">Glossaire technique - 23 - Terrage</a>
+                <a href="<?= SITE_PATH?>pages/glossaires.php">Glossaire technique - 23 - Terrage</a>
                 <h2>Projet 1 - Glossaire technique, promo 23 - Terrage</h2>
                 <p>Le glossaire technique est constiuté au fur et à mesure de votre parcours <br /> de formation. Vous en êtes les contributeurs. </p>
                 <ul>
@@ -73,7 +73,7 @@
                     <li>Le binôme note les termes ou les concepts au fur et à mesure de la <br /> journée de formation et crée les articles dans les jours de formation</li>
                     <li>Votre encadrant valide les termes</li>
                     <li>Le lundi suivant la semaine de création des articles, les termes sont <br /> revus et relus par l'encadrant et le groupe</li>
-                    <li></li>
+                    
                 </ul>
             </div>
             <input type="checkbox" name="" id="" />

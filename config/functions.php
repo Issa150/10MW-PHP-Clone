@@ -1,35 +1,15 @@
 <?php
-// if (isset($_SESSION["user"])) {
-//   $savedName = $_SESSION["user"];
-//   $query = "SELECT * FROM users3 WHERE name = '$savedName' LIMIT 1";
-//   $res = mysqli_query($con, $query);
+  include_once "connection.php";
 
-//   if ($res && mysqli_num_rows($res) > 0) {
-//     $row = mysqli_fetch_assoc($res);
-//     $fullname =  ucfirst($_SESSION["user"]) . " " . strtoupper($row["lastname"]);
+// if (isset($direPos) && $direPos == "subPage") {
+//   include_once "../config/connection.php";
+// }else{
+//   include_once "config/connection.php";
 
-//     $country = $row["country"];
-//     $city = $row["city"];
-//     $email = $row["email"];
-//     $imageProfile = $row["image_profile"];
-//   }
-// } else {
-//   $fullname =  "Unknown";
-//   $country = "...";
-//   $city = "...";
-//   $email = "...";
 // }
 
-// function dumping($var){
-//   echo "<pre>";
-//   var_dump($var);
-//   echo "</pre>";
-// }
-
-////////////////////////////////////////:::::::::
-
-if (isset($_SESSION["user"])) {
-  $savedName = $_SESSION["user"];
+if (isset($_SESSION["user10MW"])) {
+  $savedName = $_SESSION["user10MW"];
   $stmt = $pdo->prepare("SELECT * FROM users3 WHERE name = :name LIMIT 1");
   $stmt->bindParam(':name', $savedName);
   $stmt->execute();
@@ -42,10 +22,13 @@ if (isset($_SESSION["user"])) {
       $city = $row["city"];
       $email = $row["email"];
       $imageProfile = $row["image_profile"];
+      $interests = $row["inretests"];
   }
 } else {
   $fullname = "Unknown";
   $country = "...";
   $city = "...";
   $email = "...";
+  $interests = "...";
 }
+

@@ -8,15 +8,11 @@
     // justify-content: space-between;
     position: relative;
 
+    // //////////////////
     .wrap:has(h1) {
       position: absolute;
       top: $pad_hero;
       left: $pad_hero;
-    }
-    .wrap:has(img, i) {
-      position: absolute;
-      bottom: $pad_hero;
-      right: $pad_hero;
     }
     h1 {
       font-size: 2rem;
@@ -25,6 +21,13 @@
       color: #fff;
       width: fit-content;
       border-radius: 5px;
+    }
+
+    // /////////////////////
+    .wrap:has( i) {
+      position: absolute;
+      bottom: $pad_hero;
+      right: $pad_hero;
     }
     img,
     i {

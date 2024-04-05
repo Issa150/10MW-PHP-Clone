@@ -23,8 +23,6 @@ try {
     ];
 
     $pdo = new PDO($dsn, $username, $password, $options);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
     if ($pdo === false) {
         throw new Exception("Connection failed: " . $pdo->errorInfo());

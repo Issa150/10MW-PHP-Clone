@@ -41,6 +41,15 @@
 
         //Dashboard page
       }
+
+      @import "components/Footer.page";
     }
+
+    
   }
+  .page.Profile{
+    
+    @import "components/Footer.page";
+  }
+  // 
 }

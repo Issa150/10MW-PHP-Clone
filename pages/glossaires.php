@@ -10,24 +10,27 @@
     );
 */
 
-include "config/connection.php";
+include_once "../config/connection.php";
+include_once "../config/session_security.php";
+include_once "../config/variables.php";
 // include "config/functions.php";
 $pageGlossaires = "pageGlossaires";
+$title = "Glossaires";
+include_once "../inc/header.php";
+include_once "../inc/nav.php";
 
-include "inc/header.php";
-// include "config/session_security.php";
-session_start();
-include "inc/nav.php";
+////////////////////////////////////
 
+// Function for all type of categories 
 
-function getVocabularies($pdo) {
-    $query = "SELECT vocabularies.*, users3.image_profile
-                                    FROM vocabularies
-                                    LEFT JOIN users3
-                                    ON vocabularies.user_id = users3.id ORDER BY concept LIMIT 10";
-    $stmt = $pdo->prepare($query);
+function getVocabularies(PDO $pdo, string $order,int $limit ): string{
+    $sql = "SELECT vocabularies.*, users3.image_profile, users3.name
+            FROM vocabularies
+            INNER JOIN users3
+            ON vocabularies.user_id = users3.id ORDER BY $order LIMIT $limit";
+    $stmt = $pdo->prepare($sql);
     $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $rows = $stmt->fetchAll();
 
     $vocabList = '';
     foreach ($rows as $row) {
@@ -40,53 +43,83 @@ function getVocabularies($pdo) {
                 $tagList = "...";
             }
         }
+        $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $row['created_at']);
+        $date = $datetime->format('d/m/Y');
+        $time = $datetime->format('H:i');
 
-        $vocabList .= '
-            <div class="vocab_card">
-                <div class="profile">
-                    <img src="' . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg") . '" alt="" />
 
-                    <p>
-                        <strong>Author:</strong> ' . ucfirst($row["author"]) . '
-                    </p>
+        $vocabList .= "
+        <div class='vocab_card'>
+            <div class='vocab_head'>
+                <h4>". $row['concept'] . "</h4>
+            </div>
+      
+      
+            <div class='vocab_body'>
+      
+                <div class='editable' id='mycontent' >" . htmlspecialchars_decode($row['description']) . "</div>
+                
+                <div class='tag_wrap'>
+                <span>Termes associés</span><small>" . $tagList . "</small>
                 </div>
-                <div class="content_container">
-                    <div class="content">
+                <div class='meta_data'>
+                    <img class='profile' src=" . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : SITE_PATH. "assets/imgs/profile-placeholder.jpg") . " alt='' />
+                    <div class='middle_wrapper'>
+                        <p><span class='meta_title'>Author:</span>"  . ucfirst($row['name']) . "</p>
                         <p>
-                            <b>' . $row["concept"] . '</b>
+                            ". $date ."
                         </p>
-                        <p>' . $row["description"] . '</p>
-                        <small>' . $tagList . '</small>
+
                     </div>
-                    <div class="actions">';
-
-                        if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
-                            $vocabList .= '<button>Remove</button><br>';
+                    <div class='actions'>
+                        <div class='icons_wrapper'>
+                        <a><i class='fa-solid fa-link'></i></a>
+                        ";
+                          if (isset($_SESSION["user10MW"]) && $_SESSION["user10MW"] == $row["name"]) {
+                            $vocabList .= "
+                            <a href='?termId=". $row['id']."'><i class='fa-solid fa-gear'></i></a>
+                            <a href='?termId=" .$row['id'] ."'><i class='fa-solid fa-trash-can'></i></a>";
                         }
-
-                        $vocabList .= '
+                        $vocabList.="</div>
+                        <p>
+                            ". $time ."
+                        </p>
                     </div>
                 </div>
             </div>
-        ';
+        </div>" ;
+        
     }
 
     return $vocabList;
 }
+///////////////////////////////////////////
 
 
 
+  
 
+if (isset($_POST['remove'])) {
+    $id = $_POST['id'];
+    $sql = "DELETE FROM vocabularies WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    header('Location: glossaires.php');
+} elseif (isset($_POST['edit'])) {
+    $id = $_POST['id'];
+    header('Location: edit.php?id=' . $id);
+}
 ?>
-<?php  ?>
+
 <!-- ---------------- -->
 
 
 
-<main class="glossaire page">
+<main class="page glossaire">
     <div class="left_menu home active">
         <div class="wrap_btn">
-            <a href="/" class="red">
+            <a href="'<?=SITE_PATH?>#" class="red">
                 <i class="fa-solid fa-briefcase fa_icone"></i>
                 Outils, Ressources
             </a>
@@ -100,7 +133,7 @@ function getVocabularies($pdo) {
                     <h1>Développeur Web & Web Mobile</h1>
                 </div>
                 <div class="wrap">
-                    <!-- {/* <img src="../../src/assets/icons/settings.png" alt="" /> */} -->
+                    
                     <i class="fa-solid fa-gear"></i>
                 </div>
             </div>
@@ -154,7 +187,7 @@ function getVocabularies($pdo) {
                         </label>
                     </div>
                     <button>
-                        <a href="/edit">Ajouter un nouvell article</a>
+                        <a href="<?= SITE_PATH?>edit.php">Ajouter un nouvell article</a>
                     </button>
 
 
@@ -175,7 +208,10 @@ function getVocabularies($pdo) {
                             </span>
                         </div>
 
-                        <!-- {/* Content Tab */} -->
+                        <!-- {/* Contents Tab */} -->
+
+
+                        <!-- Consulter par Alphqbetiaue -->
                         <!-- {/* ______________ */} -->
                         <div class="wrap_content show_content">
                             <div class="archive_head">
@@ -218,65 +254,9 @@ function getVocabularies($pdo) {
                             </div>
 
                             <div class="archive_display">
-                                <?php
-                                    echo getVocabularies($pdo);
-                                    
-                                // $query = "SELECT vocabularies.*, users3.image_profile
-                                //     FROM vocabularies
-                                //     LEFT JOIN users3
-                                //     ON vocabularies.user_id = users3.id ORDER BY concept LIMIT 10";
-                                // $res = mysqli_query($con, $query);
+                                  
+                                <?= getVocabularies($pdo, "concept", 4);?>
 
-                                // if ($res && mysqli_num_rows($res) > 0) {
-                                //     $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
-                                //     foreach ($rows as $row) :
-                                //         $tags = explode(' ', $row['tags']);
-                                //         $tagList = '';
-                                //         foreach ($tags as $tag) {
-                                //             if (!empty($tag)) {
-                                //                 $tagList .= '<span>' . trim($tag) . '</span>';
-                                //             } else {
-                                //                 $tagList = "...";
-                                //             }
-                                //         }
-
-                                ?>
-                                        <div class="vocab_card">
-                                            <div class="profile">
-                                                <img src="<?php //(isset($row['image_profile'])) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg"
-                                                            ?>" alt="" />
-
-                                                <p>
-                                                    <strong>Author:</strong> <?php ///ucfirst($row["author"])
-                                                                                ?>
-                                                </p>
-                                            </div>
-                                            <div class="content_container">
-                                                <div class="content">
-                                                    <p>
-                                                        <b><?php //$row["concept"] ?></b>
-                                                    </p>
-                                                    <p><?php ///$row["description"] ?></p>
-                                                    <small>
-                                                        <?php //$tagList ?>
-                                                    </small>
-                                                </div>
-                                                <div class="actions">
-                                                    <?php
-                                                    // if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
-                                                    //     echo "<button>Remove</button><br>";
-                                                    // } else {
-                                                    //     echo "";
-                                                    // }
-
-                                                    ?>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                <?php// endforeach;
-                                //} ?>
                             </div>
                         </div>
 
@@ -298,68 +278,14 @@ function getVocabularies($pdo) {
                                 <!-- <h3>Consulter par Dates</h3> -->
                             </div>
                             <div class="archive_display">
-                                <?php
-
-                                $query = "SELECT vocabularies.*, users3.image_profile FROM vocabularies LEFT JOIN users3 ON vocabularies.user_id = users3.id ORDER BY created_at DESC LIMIT 5";
-                                $res = mysqli_query($con, $query);
-
-                                if ($res && mysqli_num_rows($res) > 0) {
-                                    $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
-                                    foreach ($rows as $row) :
-                                        $tags = explode(' ', $row['tags']);
-                                        $tagList = '';
-                                        foreach ($tags as $tag) {
-                                            if (!empty($tag)) {
-                                                $tagList .= '<span>' . trim($tag) . '</span>';
-                                            } else {
-                                                $tagList = "...";
-                                            }
-                                        }
-
-                                ?>
-                                        <div class="vocab_card">
-                                            <div class="profile">
-                                                <img src="<?= (isset($row['image_profile'])) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : "../assets/imgs/profile-placeholder.jpg"
-                                                            ?>" alt="" />
-
-                                                <p>
-                                                    <strong>Author:</strong> <?= ucfirst($row["author"])
-                                                                                ?>
-                                                </p>
-                                            </div>
-                                            <div class="content_container">
-                                                <div class="content">
-                                                    <p>
-                                                        <b><?= $row["concept"] ?></b>
-                                                    </p>
-                                                    <p><?= $row["description"] ?></p>
-                                                    <small>
-                                                        <?= $tagList ?>
-                                                    </small>
-                                                </div>
-                                                <div class="actions">
-                                                    <?php
-                                                    if (isset($_SESSION["user"]) && $_SESSION["user"] == $row["author"]) {
-                                                        echo "<button>Remove</button><br>";
-                                                    } else {
-                                                        echo "";
-                                                    }
-
-                                                    ?>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                <?php endforeach;
-                                } ?>
+                                <?= getVocabularies($pdo, "created_at DESC", 4)?>
                             </div>
                         </div>
 
                         <!-- {/* ______________ */} -->
                         <div class="wrap_content">
                             <div class="message">
-                                <h3>Consulter par author</h3>
+                                <h3>ddddConsulter par author</h3>
                                 <p>Pas de contenue encore!</p>
                                 <p>Contacter Issa pour avoir plus de contenues</p>
                             </div>
@@ -368,10 +294,9 @@ function getVocabularies($pdo) {
                 </div>
             </div>
         </section>
-        <?php include "inc/footer_page.php"; ?>
+        <?php include "../inc/footer_page.php"; ?>
     </div>
 </main>
 
 <!-- ---------------- -->
-<?php include "inc/footer.php"
-?>
+<?php include_once "../inc/footer.php"; ?>

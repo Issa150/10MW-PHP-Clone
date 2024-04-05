@@ -1,9 +1,22 @@
 $pinck_prim: #FF3366;
 $teal_prime: #005259;
+$teal_light: rgb(208, 231, 233);
 $light-prime: #fff;
+$clr_semi_light:rgb(239, 242, 243);
 $clr_black: #575757;
 
 $sz_icone: 25px;
 $sec_teal_num: 7%;
 $pad_hero: 1.7em;
 $border_radius_containers: 5px;
+$clr_black: #303030;
+
+
+////////////////////////////////////////////////
+
+
+@mixin imageProfile($width:100px, $rouded: 50%){
+  width:  $width;
+  aspect-ratio: 1/1;
+  border-radius: $rouded;
+}

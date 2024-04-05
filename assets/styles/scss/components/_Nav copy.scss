@@ -126,18 +126,28 @@ nav {
 img.menu {
   width: 20px;
 }
-.left_nav button {
+
+
+
+
+.left_nav button.asiderBtn {
   outline: none;
   border: none;
-  padding: 6px 12px;
+  padding: 6px;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.089);
-}
-.left_nav button:hover {
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: hsla(180, 100%, 25%, 0.205);
+
+  &:hover {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: hsla(180, 100%, 25%, 0.205);
+  }
+  
+  i{
+    font-size: 1.3em;
+    margin: 0;
+  }
 }
 .m_Icon {
   width: 20px;

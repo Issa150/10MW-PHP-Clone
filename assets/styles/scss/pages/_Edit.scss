@@ -1,71 +1,93 @@
 button a {
-    background: transparent;
-    padding: 0;
-    margin-block: 0px;
-    font-size: inherit;
+  background: transparent;
+  padding: 0;
+  margin-block: 0px;
+  font-size: inherit;
+}
+
+.vocabulary_container {
+  margin-top: 2em;
+
+  .fa-circle-exclamation {
+    color: red;
+  }
+  .fa {
+    transition: 0.25s;
+  }
+  .anim_accord {
+    transform: rotate(90deg);
+  }
+
+  .accord_head {
+    padding: 1em;
+    font-size: 16px;
+    background: teal;
+    margin-top: 10px;
+  }
+
+  .accord_body {
+    display: none;
+
+    &.open_accord {
+      display: block;
+    }
+
+    .child_wrap {
+      display: grid;
+
+      grid-template-columns: 170px 1fr;
+      padding: 0.5em;
+
+      div:has(label) {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+      }
+    }
+
+    input {
+      width: 300px;
+      padding: 0.5em 0.7em;
+      font-size: 1.1rem;
+    }
+  }
+
+  button {
+    padding: 1em;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+  }
+
+  .enregistrer {
+    color: aliceblue;
+    background: teal;
+    margin-left: 0;
+  }
+}
+// Editor feature color
+.highlight-yellow {
+    background-color: yellow;
   }
   
-  .vocabulary_container {
+  .highlight-green {
+    background-color: green;
+  }
   
-    margin-top: 2em;
+  .highlight-blue {
+    background-color: blue;
+  }
   
-    .fa-circle-exclamation {
-        color: red;
-    }
-    .fa{
-      transition: .25s;
-    }
-    .anim_accord{
-      transform: rotate(90deg);
-    }
+  .text-red {
+    color: red;
+  }
   
-    .accord_head {
-        padding: 1em;
-        font-size: 16px;
-        background: teal;
-        margin-top: 10px;
-    }
+  .text-green {
+    color: green;
+  }
   
-    .accord_body {
-        display: none;
-  
-        &.open_accord {
-            display: block;
-        }
-  
-        .child_wrap {
-            display: grid;
-  
-            grid-template-columns: 170px 1fr;
-            padding: .5em;
-  
-            div {
-                display: flex;
-                justify-content: space-between;
-                align-items: start;
-            }
-        }
-  
-        input {
-            width: 300px;
-            padding: 0.5em 0.7em;
-            font-size: 1.1rem;
-  
-        }
-    }
-  
-    button {
-        padding: 1em;
-        font-weight: bold;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        margin: 10px;
-  
-    }
-  
-    .enregistrer {
-        color: aliceblue;
-        background: teal;
-    }
+  .text-blue {
+    color: blue;
   }
