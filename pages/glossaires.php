@@ -1,20 +1,15 @@
 <?php
-/*
-    CREATE TABLE vocabularies (
-        id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        author VARCHAR(255) NOT NULL,
-        concept VARCHAR(100) NOT NULL,
-        description TEXT NOT NULL,
-        tags VARCHAR(50),
-        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  
-    );
-*/
-
-include_once "../config/connection.php";
-include_once "../config/session_security.php";
 include_once "../config/variables.php";
-// include "config/functions.php";
-$pageGlossaires = "pageGlossaires";
+include_once "../config/session_security.php";
+
+//************  Login check  ************//
+if(!isset($_SESSION['user10MW'])){
+    header("Location: ".SITE_PATH."pages/login.php");
+}
+/////////////
+include_once "../config/connectionDB.php";
+// include "../config/functions.php";
+
 $title = "Glossaires";
 include_once "../inc/header.php";
 include_once "../inc/nav.php";
@@ -63,7 +58,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                 <span>Termes associés</span><small>" . $tagList . "</small>
                 </div>
                 <div class='meta_data'>
-                    <img class='profile' src=" . (isset($row['image_profile']) ? ("data:image/jpeg;base64," . base64_encode($row['image_profile'])) : SITE_PATH. "assets/imgs/profile-placeholder.jpg") . " alt='' />
+                    <img class='profile' src=" . (isset($row['image_profile']) ? (SITE_PATH. 'assets/uploads/user/'.$row['image_profile']) : SITE_PATH. "assets/imgs/profile-placeholder.jpg") . " alt='' />
                     <div class='middle_wrapper'>
                         <p><span class='meta_title'>Author:</span>"  . ucfirst($row['name']) . "</p>
                         <p>
@@ -75,7 +70,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                         <div class='icons_wrapper'>
                         <a><i class='fa-solid fa-link'></i></a>
                         ";
-                          if (isset($_SESSION["user10MW"]) && $_SESSION["user10MW"] == $row["name"]) {
+                          if (isset($_SESSION["user10MW"]) && $_SESSION["user10MW"]['name'] == $row["name"]) {
                             $vocabList .= "
                             <a href='?termId=". $row['id']."'><i class='fa-solid fa-gear'></i></a>
                             <a href='?termId=" .$row['id'] ."'><i class='fa-solid fa-trash-can'></i></a>";
@@ -93,11 +88,12 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
 
     return $vocabList;
 }
+
+
+
 ///////////////////////////////////////////
-
-
-
-  
+$db = new Database();
+$pdo = $db->connect();
 
 if (isset($_POST['remove'])) {
     $id = $_POST['id'];
@@ -187,7 +183,7 @@ if (isset($_POST['remove'])) {
                         </label>
                     </div>
                     <button>
-                        <a href="<?= SITE_PATH?>edit.php">Ajouter un nouvell article</a>
+                        <a href="<?= SITE_PATH?>pages/edit_term.php">Ajouter un nouvell article</a>
                     </button>
 
 

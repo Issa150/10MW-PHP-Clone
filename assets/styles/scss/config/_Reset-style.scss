@@ -1,10 +1,40 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-img{
-    width: 100%;
-    // display: block;
-    object-fit: cover;
+img {
+  width: 100%;
+  // display: block;
+  object-fit: cover;
 }
+// Genral Styling
+.fa_icone {
+  color: $teal_prime;
+  font-size: $sz_icone;
+}
+a {
+  // font-size: .85rem;
+  display: block;
+  padding: 0.4em 0.6em;
+  // padding-inline: 2em;
+  background: #fff;
+  color: $teal_prime;
+  margin-block: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+
+  &:hover {
+    background: #e3e3e3;
+  }
+}
+// i.fa_icone{
+//     margin-right: 3px;
+// }
+i {
+  // width: 25px;
+  // margin-right: 0.3em;
+  margin-right: 1em;
+}
+// i {
+// }

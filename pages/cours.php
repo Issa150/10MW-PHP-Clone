@@ -1,25 +1,25 @@
 <?php 
-include_once "../config/session_security.php";
 include_once "../config/variables.php";
+include_once "../config/session_security.php";
 
-include_once "../config/connection.php";
-include_once "../config/functions.php";
-// include 'config/db_conn.php';
-// $_SESSION["user"];
-
-// $_SESSION["user"] = "Ali";
-
+//************  Login check  ************//
+if(!isset($_SESSION['user10MW'])){
+    header("Location: ".SITE_PATH."pages/login.php");
+}
 
 
+//////////////
 
 
 
-//////////////////////////////
+
+//////////////
 $title = "Cours";
 include_once "../inc/header.php"; 
 include_once "../inc/nav.php";
 ?>
 <?php  ?>
+<!-- ---------------- -->
 <!-- ---------------- -->
 
 

@@ -1,20 +1,35 @@
 <?php
-$direPos = "page";
-include "../config/connection.php";
-include "../config/session_security.php";
 include "../config/variables.php";
-include "../config/functions.php";
+include "../config/session_security.php";
+
+//************  Login check  ************//
+if(!isset($_SESSION['user10MW'])){
+    header("Location: ".SITE_PATH."pages/login.php");
+}
+/////////////
+include_once "../config/connectionDB.php";
+include_once "../config/functions.php";
 
 
+//************  All functions are here  ************//
 
 
-$allInterests = explode(',', $interests);
-$tagList = '';
-foreach ($allInterests as $interest) {
-    if (!empty($interest)) {
-        $tagList .= '<span>' . trim($interest) . '</span>';
-    } else {
-        $tagList = "...";
+$currUser = getUserInfo($_SESSION['user10MW']['id']);
+
+function showIterests($currUser)
+{
+    $userInterests = $currUser['interests'];
+    if ($userInterests) {
+        $allInterests = explode(',', $userInterests);
+        $tagInterests = '';
+        foreach ($allInterests as $interest) {
+            if (!empty($interest)) {
+                $tagInterests .= '<span>' . trim($interest) . '</span>';
+            } else {
+                $tagInterests = "...";
+            }
+        }
+        return $tagInterests;
     }
 }
 
@@ -30,16 +45,13 @@ include "../inc/nav.php";
     <div class="main_wrapp">
         <section class="main_board">
 
-
-
-
             <div class='hero_of_main'>
 
 
                 <div class="wrap">
                     <img class='profile' src="
-                    <?= (isset($imageProfile))
-                        ? ("data:image/jpeg;base64," . base64_encode($imageProfile))
+                    <?= (isset($currUser['image_profile']))
+                            ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
                         : SITE_PATH . "assets/imgs/imgPlaceholder01.png";
                     ?>" alt="" />
 
@@ -56,34 +68,28 @@ include "../inc/nav.php";
 
 
 
-
-
-
-
-
-
             <div class="profile_infos">
                 <div class="card_info">
                     <h3>Informations détaillées</h3>
-                    <a href="<?=SITE_PATH?>pages/edit_profile.php" class='btn'>Modifier le profil</a>
+                    <a href="<?= SITE_PATH ?>pages/edit_profile.php" class='btn'>Modifier le profil</a>
                     <dl>
                         <dt>Adresse de courriel</dt>
-                        <dd><?= $email ?></dd>
+                        <dd><?= $currUser['email']  ?></dd>
                     </dl>
 
                     <dl>
                         <dt>Pays</dt>
-                        <dd><?= $country ?></dd>
+                        <dd><?= $currUser['country'] ?></dd>
                     </dl>
 
                     <dl>
                         <dt>Ville</dt>
-                        <dd><?= $city ?></dd>
+                        <dd><?= $currUser['city'] ?></dd>
                     </dl>
                     <dl>
                         <dt>Centres d'intérêt</dt>
                         <!-- The php should rebder an array !!!!!!! -->
-                        <dd><?= $tagList ?></dd>
+                        <?= !empty($_SESSION['user10MW']['interests']) ? "<dd>".showIterests($currUser)."</dd>" : "" ?>
                     </dl>
                 </div>
 

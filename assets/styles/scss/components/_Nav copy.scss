@@ -47,13 +47,14 @@ nav {
         background: white;
         box-shadow: 0 5px 10px hsl(0 0% 0%/0.2);
 
-        // i {
-          // margin-right: 1em;
-        // }
 
         a {
           display: block;
           font-size: .85rem;
+
+          i{
+            margin-right: .5em;
+          }
         }
       }
 

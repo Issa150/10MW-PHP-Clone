@@ -1,12 +1,17 @@
 <?php 
-$title = "Dashboard";
 include_once "config/variables.php";
 include_once "config/session_security.php";
-include "inc/header.php" ;
-include "inc/nav.php";
-// if ($_SESSION['user']){
-//     echo $_SESSION('user');
-// }
+
+// ************  Login check  ************//
+if(!isset($_SESSION['user10MW'])){
+    header("Location: ".SITE_PATH."pages/login.php");
+}
+/////////////
+$title = "Dashboard";
+include_once "inc/header.php" ;
+include_once "inc/nav.php";
+
+
 ?>
 <!-- ---------------- -->
 
@@ -92,9 +97,9 @@ include "inc/nav.php";
                 </div>
             </div>
         </section>
-        <?php include "inc/footer_page.php"; ?>
+        <?php include_once "inc/footer_page.php"; ?>
     </div>
 </main>
 
 <!-- ---------------- -->
-<?php include "inc/footer.php" ?>
+<?php include_once "inc/footer.php" ?>

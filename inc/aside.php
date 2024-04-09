@@ -1,11 +1,12 @@
 <?php
 
 
-// mysqli_close($con);
-// $options=[
-//   'cost'=>12
-// ];
-// echo "> " .password_hash("mehdi24", PASSWORD_DEFAULT, $options) . " <";
+// $fullname = ucfirst($savedName) . " " . strtoupper($row["lastname"]);
+
+//       $country = $row["country"];
+//       $city = $row["city"];
+//       $email = $row["email"];
+//       $imageProfile = $row["image_profile"];
 ?>
 <div class="left_menu active">
   <div class="wrap_tabs">
@@ -32,18 +33,16 @@
 
         <div class="wrap_card_info">
           <div class="left">
-            <img class="profile" src="<?=
-                                      (isset($imageProfile)) ? ("data:image/jpeg;base64," . base64_encode($imageProfile)) : SITE_PATH."assets/imgs/imgPlaceholder01.png"
-                                      ?>" alt="Avatar" />
+            <img class="profile" src="<?=(isset($_SESSION['user10MW'])) ?  SITE_PATH . "assets/uploads/user/".$_SESSION['user10MW']['image_profile'] : SITE_PATH."assets/imgs/imgPlaceholder01.png"?>" alt="Avatar" />
           </div>
           <div class="right">
             <h2>
-              <?= $fullname; ?>
+              <?= isset($_SESSION["user10MW"]) ?ucfirst($_SESSION["user10MW"]['name']) ." ". strtoupper($_SESSION["user10MW"]['lastName']) : ""; ?>
             </h2>
             <ul>
-              <li>Pays: <span><?= $country; ?></span></li>
-              <li>Ville: <span><?= $city; ?></span></li>
-              <li>Adresse de courriel: <span><a class="mail" href="#"><?= $email; ?></a></span></li>
+              <li>Pays: <span><?= isset($_SESSION["user10MW"]) ? $_SESSION["user10MW"]['country'] :""; ?></span></li>
+              <li>Ville: <span><?= isset($_SESSION["user10MW"]) ? $_SESSION["user10MW"]['city'] :""; ?></span></li>
+              <li>Adresse de courriel: <span><a class="mail" href="#"><?= isset($_SESSION["user10MW"]) ? $_SESSION["user10MW"]['email'] :""; ?></a></span></li>
             </ul>
           </div>
         </div>

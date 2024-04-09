@@ -1,62 +1,65 @@
 <?php
-/*
-
-*/
 include_once "../config/variables.php";
-include "../config/connection.php";
+include "../config/connectionDB.php";
 include "../config/session_security.php";
 
+////////   function is ready to be moved to another file    ////////////
+function login($pdo, $username, $password)
+{
 
-
-//////////////////////////////////////////////////////////:::
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = strtolower( filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS));
-    $password = $_POST["password"];
-
-    $options = [
-        'cost' => 12
-    ];
-
-    $query = "SELECT * FROM users3 WHERE name = :name LIMIT 1";
+    $query = "SELECT id,name,lastName,role,password,email,country,city,image_profile,interests FROM users3 WHERE name = :name LIMIT 1";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':name', $username);
     $stmt->execute();
     $userData = $stmt->fetch();
 
-    if ($userData){
-        if(password_verify($password, $userData["password"])) {
-            $_SESSION["user10MW"] = $name;
-            header("Location: ". SITE_PATH);
-        }else{
+    if ($userData) {
+        if (password_verify($password, $userData["password"])) {
+            $_SESSION["user10MW"] = $userData;
+
+            if($userData['role'] == 'ROLE_USER'){
+                header("Location: ".SITE_PATH . "index.php"); 
+            }elseif($userData['role'] === 'ROLE_TEACHER'){
+                header("Location: ".SITE_PATH."teachers/");
+            }elseif($userData['role'] === 'ROLE_ADMIN' || $userData['role'] === 'ROLE_ADMIN_MAIN'){
+                header("Location: ".SITE_PATH."admins/");
+            }
+
+            header("Location: " . SITE_PATH);
+        } else {
             echo "Password is incorrect!";
         }
     } else {
         echo "Name is not valid !";
     }
-} else {
-    if (isset($_SESSION["user10MW"])) {
-        unset($_SESSION["user10MW"]);
-        echo "Considered as deconection!";
-    } else {
-
-    }
 }
+
+// login callback
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = strtolower(filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS));
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+    // $password = $_POST["password"];
+
+    $db = new Database();
+    $pdo = $db->connect();
+    login($pdo, $username, $password);
+}
+
 $title = "Login";
 include "../inc/header.php";
 ?>
-<!-- ---------------- -->
 
+<!-- ---------------- -->
 
 <div class="container">
     <div class="demo_wrapper">
         <span>Demo</span>
         <div>
-            <a href="<?= SITE_PATH?>">Accès sans connection</a>
+            <a href="<?= SITE_PATH ?>">Accès sans connection</a>
         </div>
     </div>
     <div class="login_wrapper">
-        <img src="assets/imgs/big-logo-removebg.png" alt="" />
+        <img src="<?= SITE_PATH ?>assets/imgs/big-logo-removebg.png" alt="" />
 
         <form class="content" method="post">
             <div class="message_container">
@@ -67,7 +70,7 @@ include "../inc/header.php";
                     Nom d'utilisateur ou mot de pass <br> ne sont pas correct!
                 </p>
             </div>
-            <input type="text" name="name" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
+            <input type="text" name="username" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
             <input type="password" onChange={inputHandler} placeholder="Mot de passe" name="password" />
             <div class="wrap">
                 <input type="checkbox" name="" id="" />

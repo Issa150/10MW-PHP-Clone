@@ -1,32 +1,5 @@
 // @import 'config/Variables.scss';
 
-// Genral Styling
-.fa_icone {
-  color: $teal_prime;
-  font-size: $sz_icone;
-}
-a {
-  // font-size: .85rem;
-  display: block;
-  padding: 0.4em 0.6em;
-  background: #fff;
-  color: $teal_prime;
-  margin-block: 5px;
-  text-decoration: none;
-
-  &:hover {
-    background: #e3e3e3;
-  }
-}
-// i.fa_icone{
-//     margin-right: 3px;
-// }
-i {
-  width: 25px;
-  margin-right: 0.3em;
-}
-
-// -----------------------------
 // Level 1
 .left_menu,
 .left_menu.home {
@@ -155,18 +128,20 @@ i {
       margin-top: 20px;
     }
   }
+
+
+  
   // toggling visiblity of tab contents inside side nav
   .wrap_content.show_content {
     display: block;
   }
-}
-// toggling Off convas side nav
-// .left_menu.active{
-//     margin-left: 0;
-// }
 
-.left_menu.home {
-  .wrap_content {
-    display: block;
+  // active content of asider
+  &.left_menu.home {
+    .wrap_content {
+      display: block;
+    }
   }
 }
+
+

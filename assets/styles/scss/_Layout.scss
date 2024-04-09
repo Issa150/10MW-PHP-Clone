@@ -1,3 +1,5 @@
+
+@import "components/Nav copy";
 .page_container {
   display: grid;
   height: 100vh;
@@ -14,6 +16,9 @@
     margin: 0.7em 0.6em 0 0;
     background: $light-prime;
 
+    @import "components/Asider.scss";
+
+    // left menu toggle function accross the site
     .left_menu {
       width: 300px;
       margin-left: -350px;
@@ -27,29 +32,34 @@
     .main_wrapp {
       overflow: auto;
 
+      // main page holder for all pages of website
       .main_board {
         overflow-y: auto;
         margin: 0 0.6em;
         margin: 0 0.6em;
         box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.33);
-
+        
         //page Title board styles
         @import "components/partials/Title-page";
-
+        
+        //  pages comes here.
         //Course page contents
         @import "components/partials/Tools";
 
-        //Dashboard page
+        // Dashboard page
+        @import "pages/Dashboard";
+
+        @import "pages/Edit";
+        // @import "pages/subpages/edit_profile";
       }
 
       @import "components/Footer.page";
     }
-
-    
   }
-  .page.Profile{
-    
+  .page.Profile {
     @import "components/Footer.page";
   }
-  // 
+  .page.edit_profile {
+    @import "components/Footer.page";
+  }
 }

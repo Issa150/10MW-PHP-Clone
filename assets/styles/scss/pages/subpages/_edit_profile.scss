@@ -4,19 +4,68 @@
   .main_wrapp {
     .main_board {
       box-shadow: 0 0 10px rgba(128, 128, 128, 0.337);
-        .accordion_container{
+      width: max(600px, 1100px);
+      margin-inline: auto;
+      .hero_of_main {
 
-            .child_wrap {
-              .uploader_card {
-                i.fa-cloud-arrow-up {
-                  font-size: 3rem;
-                }
-                input[type="file"]{
-                    display: none;
-                }
+        height: 170px;
+  
+        .wrap:has(.profile){
+          background-color: $teal_prime;
+          width: max-content;
+          border-radius: $border_radius_containers;
+          display: flex;
+          align-items: center;
+          padding: 10px;
+  
+          .profile{
+            width: 70px;
+          }
+        }
+  
+        .wrap:has(button){
+          width: max-content;
+          position: absolute;
+          top: $pad_hero;
+          right: $pad_hero;
+        }
+      }
+
+
+      form {
+        padding: 1em;
+        .accordion_container {
+          .child_wrap {
+            .uploader_card {
+              i.fa-cloud-arrow-up {
+                font-size: 3rem;
+              }
+              input[type="file"] {
+                display: none;
               }
             }
+          }
         }
+
+        .btn_link {
+          display: inline-block;
+          padding: .5em 1.1em;
+          font-weight: bold;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+          margin: 10px;
+          background: #000;
+          color: aliceblue;
+        }
+      
+        .enregistrer {
+          color: aliceblue;
+          background: teal;
+          margin-left: 0;
+        }
+
+      }
     }
   }
 }
