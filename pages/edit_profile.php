@@ -70,7 +70,7 @@ if (!empty($_POST)) {
     header('Location: profile.php');
 }
 // $direPos = "subPage";
-$title = "edit_profile";
+$titleCss = "edit_profile";
 include_once "../inc/header.php";
 include_once "../inc/nav.php";
 

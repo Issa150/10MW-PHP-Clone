@@ -3,8 +3,8 @@ include "../config/variables.php";
 include "../config/session_security.php";
 
 //************  Login check  ************//
-if(!isset($_SESSION['user10MW'])){
-    header("Location: ".SITE_PATH."pages/login.php");
+if (!isset($_SESSION['user10MW'])) {
+    header("Location: " . SITE_PATH . "pages/login.php");
 }
 /////////////
 include_once "../config/connectionDB.php";
@@ -36,10 +36,12 @@ function showIterests($currUser)
 
 
 
-$title = "Profile";
+$titleCss = "profile";
 include "../inc/header.php";
 include "../inc/nav.php";
 ?>
+
+
 <main class="page Profile ">
 
     <div class="main_wrapp">
@@ -51,7 +53,7 @@ include "../inc/nav.php";
                 <div class="wrap">
                     <img class='profile' src="
                     <?= (isset($currUser['image_profile']))
-                            ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
+                        ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
                         : SITE_PATH . "assets/imgs/imgPlaceholder01.png";
                     ?>" alt="" />
 
@@ -89,7 +91,7 @@ include "../inc/nav.php";
                     <dl>
                         <dt>Centres d'intérêt</dt>
                         <!-- The php should rebder an array !!!!!!! -->
-                        <?= !empty($_SESSION['user10MW']['interests']) ? "<dd>".showIterests($currUser)."</dd>" : "" ?>
+                        <?= !empty($_SESSION['user10MW']['interests']) ? "<dd>" . showIterests($currUser) . "</dd>" : "" ?>
                     </dl>
                 </div>
 

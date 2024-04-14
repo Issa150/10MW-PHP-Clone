@@ -10,7 +10,7 @@ if(!isset($_SESSION['user10MW'])){
 include_once "../config/connectionDB.php";
 // include "../config/functions.php";
 
-$title = "Glossaires";
+$titleCss = "glossaires";
 include_once "../inc/header.php";
 include_once "../inc/nav.php";
 

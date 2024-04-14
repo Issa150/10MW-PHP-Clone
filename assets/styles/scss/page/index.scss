@@ -1,0 +1,222 @@
+@import "../base/Variables";
+@import "../base/Reset-style";
+@import "../layout";
+
+// partial of cours -single
+.hero_of_main.cours-single{
+  height: 150px !important;
+
+  .wrap:has(h1) {
+    top: 50% !important;
+    left: 50% !important;
+    // height: 50%;
+    transform: translate(-50%,-50%);
+
+  }
+}
+
+// everything behind is handled by _layout.scss
+//*** this compnent is inside index.php
+.main_content {
+  background: #fff;
+  padding: 1em;
+  border-radius: 5px;
+  margin-block: 1em;
+
+  //*********  Cours style START   ***************************
+  // general selecttion  based on placement in structure layout
+  & > div {
+    margin-block: 1em;
+  }
+
+  // specific selection one/multiple tagets inside certain multiple elements
+  :is(.event-notif-container, .cours-container) :is(h2) {
+    font-size: 2rem;
+    padding-block: 1em;
+  }
+
+  //sepecefic selections  01
+  .event-notif-container {
+    .content-row-container {
+      // margin: 2em 1em;
+
+      .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .row {
+        display: flex;
+        gap: 10px;
+
+        & > article {
+          box-shadow: 0 0 10px rgb(186, 184, 184);
+          transition: 0.35s;
+
+          border: 8px solid whitesmoke;
+
+          &:hover {
+            translate: 0 -5px;
+            box-shadow: 0 0 15px rgb(186, 184, 184);
+          }
+        }
+
+        .event-card {
+          width: 250px;
+          padding: 1em;
+          border-radius: 1em;
+          background-color: $teal_palette_1;
+          color: azure;
+          // background-image: radial-gradient(
+          //     at 83% 13%,
+          //     hsla(180, 63%, 79%, 1) 0px,
+          //     transparent 50%
+          //   ),
+          //   radial-gradient(
+          //     at 15% 73%,
+          //     hsla(255, 72%, 73%, 1) 0px,
+          //     transparent 50%
+          //   ),
+          //   radial-gradient(
+          //     at 85% 40%,
+          //     hsla(256, 74%, 68%, 1) 0px,
+          //     transparent 50%
+          //   );
+
+          .meta-data:nth-child(1) {
+            display: flex;
+            gap: 1em;
+            align-items: center;
+
+            .days-left {
+              font-size: 6rem;
+              font-family: "Bebas Neue", sans-serif;
+              font-weight: 400;
+              line-height: 0.9em;
+              color: $clr_semi_light;
+            }
+            p:nth-child(2) {
+              margin-bottom: 0.8em;
+            }
+          }
+          h3 {
+            font-size: 2rem;
+            //   color: $teal_prime;
+          }
+          .meta-data:nth-child(2) {
+            flex-direction: column;
+          }
+        }
+
+        .event-card,
+        .homework-card {
+          .meta-info-author {
+            margin-top: 1em;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            img {
+              width: 35px;
+              aspect-ratio: 1/1;
+              border-radius: 50%;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //sepecefic selections  02
+  .cours-container {
+    .section-head {
+      > div {
+        display: flex;
+        justify-content: space-between;
+
+        .filters {
+          button {
+            display: flex;
+            justify-content: space-between;
+            color: rgb(83, 83, 83);
+
+            i {
+              margin: 0 10px;
+            }
+          }
+        }
+      }
+    }
+
+    //   /////////////////////
+
+    .section-body {
+      margin-top: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .card {
+        width: 300px;
+        outline: 1px solid lightgrey;
+        border-radius: $border_r;
+        transition: .25s;
+
+        > img {
+          aspect-ratio: 1/0.4;
+          border-radius: $border_r;
+          // opacity: .8;
+          filter: grayscale(70%);
+          transition: .25s;
+        }
+        &:hover img{
+          // opacity: 1;
+          filter: grayscale(0%);
+        }
+        &:hover{
+          translate: 0 -5px;
+        }
+
+        .content {
+          padding: 0.5em;
+
+          > div {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          a {
+            padding-inline: 10px;
+          }
+
+          div.progression {
+            display: flex;
+            flex-direction: column;
+
+            progress {
+              width: 100%;
+            }
+
+            label {
+              font-size: 0.89rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ////////////////////////////////////////////////////////////
+  //*********  Cours style END   ***************************
+
+  
+
+}
+
+/*
+  footer {
+    background: $teal_prime;
+  }
+  */

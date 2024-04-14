@@ -1,0 +1,53 @@
+@import "../base/Variables";
+@import "../base/Reset-style";
+@import "../layout";
+
+
+.my_courses {
+  background: #fff;
+  color: #000;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 17px hsla(0, 0%, 50%, 0.66);
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0em;
+  }
+}
+
+// partial of cours -single
+.hero_of_main{
+  height: 150px !important;
+
+  .wrap:has(h1) {
+    top: 50% !important;
+    left: 50% !important;
+    // height: 50%;
+    transform: translate(-50%,-50%);
+
+  }
+}
+
+// everything behind is handled by _layout.scss
+
+.main_content {
+  background: #fff;
+  padding: 1em;
+  border-radius: 5px;
+  margin-block: 1em;
+
+
+  .tab-head-container{
+
+    ul{
+
+      width: max(400px,80%);
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid lightgrey;
+    }
+  }
+
+}
+

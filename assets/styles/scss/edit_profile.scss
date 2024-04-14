@@ -1,3 +1,7 @@
+@import "base/Variables";
+@import "base/Reset-style";
+@import "layout";
+
 .page.edit_profile {
   grid-template-columns: auto;
 
@@ -7,23 +11,22 @@
       width: max(600px, 1100px);
       margin-inline: auto;
       .hero_of_main {
-
         height: 170px;
-  
-        .wrap:has(.profile){
+
+        .wrap:has(.profile) {
           background-color: $teal_prime;
           width: max-content;
           border-radius: $border_radius_containers;
           display: flex;
           align-items: center;
           padding: 10px;
-  
-          .profile{
+
+          .profile {
             width: 70px;
           }
         }
-  
-        .wrap:has(button){
+
+        .wrap:has(button) {
           width: max-content;
           position: absolute;
           top: $pad_hero;
@@ -31,17 +34,40 @@
         }
       }
 
-
       form {
         padding: 1em;
         .accordion_container {
-          .child_wrap {
-            .uploader_card {
-              i.fa-cloud-arrow-up {
-                font-size: 3rem;
+          .accord_head {
+            padding: 1em;
+            font-size: 16px;
+            background: teal;
+            margin-top: 10px;
+          }
+          .accord_body {
+            display: none;
+
+            &.open_accord {
+              display: block;
+            }
+
+            .child_wrap {
+              display: grid;
+  
+              grid-template-columns: 170px 1fr;
+              padding: 0.5em;
+  
+              div:has(label) {
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
               }
-              input[type="file"] {
-                display: none;
+              .uploader_card {
+                i.fa-cloud-arrow-up {
+                  font-size: 3rem;
+                }
+                input[type="file"] {
+                  display: none;
+                }
               }
             }
           }
@@ -49,7 +75,7 @@
 
         .btn_link {
           display: inline-block;
-          padding: .5em 1.1em;
+          padding: 0.5em 1.1em;
           font-weight: bold;
           outline: none;
           border: none;
@@ -58,13 +84,12 @@
           background: #000;
           color: aliceblue;
         }
-      
+
         .enregistrer {
           color: aliceblue;
           background: teal;
           margin-left: 0;
         }
-
       }
     }
   }

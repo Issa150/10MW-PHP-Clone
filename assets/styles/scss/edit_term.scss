@@ -1,3 +1,38 @@
+@import "base/Variables";
+@import "base/Reset-style";
+@import "layout";
+
+.glossaires_wrapper {
+  padding: 1.2em 0.8em;
+  background: #fff;
+  .title {
+    font-size: 8px;
+    text-align: center;
+    border-top: 5px solid lightgrey;
+    padding: 4em 1em;
+
+    span {
+      font-weight: normal;
+      font-size: 0.9rem;
+    }
+  }
+
+  .tool_card {
+    margin-left: 3em;
+
+    .wrapper {
+      a {
+        background: transparent;
+        padding: 0;
+        text-decoration: underline;
+      }
+
+      ul {
+        margin-left: 4em;
+      }
+    }
+  }
+}
 button a {
   background: transparent;
   padding: 0;
@@ -46,7 +81,7 @@ button a {
     }
 
     input {
-      width: 300px;
+      min-width: 300px;
       padding: 0.5em 0.7em;
       font-size: 1.1rem;
     }
@@ -69,25 +104,25 @@ button a {
 }
 // Editor feature color
 .highlight-yellow {
-    background-color: yellow;
-  }
-  
-  .highlight-green {
-    background-color: green;
-  }
-  
-  .highlight-blue {
-    background-color: blue;
-  }
-  
-  .text-red {
-    color: red;
-  }
-  
-  .text-green {
-    color: green;
-  }
-  
-  .text-blue {
-    color: blue;
-  }
+  background-color: yellow;
+}
+
+.highlight-green {
+  background-color: green;
+}
+
+.highlight-blue {
+  background-color: blue;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-blue {
+  color: blue;
+}

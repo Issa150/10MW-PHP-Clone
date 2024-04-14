@@ -1,18 +1,18 @@
-@import "config/Variables";
-@import "config/Reset-style";
-// @import "components/Nav copy";
-@import "layout";
-// @import "components/Asider.scss";
+// @import "base/Variables";
+// @import "base/Reset-style";
+// @import "layout";
+// //// @import "components/Nav copy";
+// //// @import "components/Asider.scss";
 
-// @import "components/Footer.page";
-// @import "pages/Dashboard";
+// //// @import "components/Footer.page";
+// //// @import "pages/Dashboard";
 
-// @import "pages/Edit";
-// these components have used ".page" so they should be here in root!
-@import "pages/Glossaires";
-@import "pages/Profile";
-// not clear !!!
-@import "pages/subpages/edit_profile";
-// a bit of .page, just for  footer
-@import "pages/course.scss";
-@import "pages/Login";
+// //// @import "pages/Edit";
+// //// these components have used ".page" so they should be here in root!
+// @import "pages/Glossaires";
+// @import "pages/Profile";
+// // not clear !!!
+// @import "pages/subpages/edit_profile";
+// //// a bit of .page, just for  footer
+// @import "pages/course.scss";
+// @import "pages/Login";

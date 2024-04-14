@@ -1,4 +1,3 @@
-
 @import "components/Nav copy";
 .page_container {
   display: grid;
@@ -38,23 +37,23 @@
         margin: 0 0.6em;
         margin: 0 0.6em;
         box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.33);
-        
+
         //page Title board styles
         @import "components/partials/Title-page";
-        
+
         //  pages comes here.
         //Course page contents
         @import "components/partials/Tools";
 
         // Dashboard page
-        @import "pages/Dashboard";
+        // @import "pages/Dashboard";
 
-        @import "pages/Edit";
+        // @import "pages/Edit";
         // @import "pages/subpages/edit_profile";
       }
 
-      @import "components/Footer.page";
     }
+    @import "components/Footer.page";
   }
   .page.Profile {
     @import "components/Footer.page";

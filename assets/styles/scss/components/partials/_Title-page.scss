@@ -1,37 +1,80 @@
 .hero_of_main {
-    height: 150px;
-    background: url("https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80")
-      center/cover;
-    border-radius: 5px;
-    padding: $pad_hero;
-    // display: flex;
-    // justify-content: space-between;
-    position: relative;
+  height: 150px;
+  background: url("https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80")
+    center/cover;
+  border-radius: 5px;
+  padding: $pad_hero;
+  overflow: hidden;
+  position: relative;
 
-    // //////////////////
-    .wrap:has(h1) {
-      position: absolute;
-      top: $pad_hero;
-      left: $pad_hero;
-    }
+  // /////////////////////
+  .wrap:has(i) {
+    position: absolute;
+    bottom: $pad_hero;
+    right: $pad_hero;
+  }
+  img.icon,
+  i {
+    width: $sz_icone;
+    color: azure;
+  }
+}
+
+//////////////////////////////////
+
+.hero_of_main {
+  height: 270px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.318);
+  & > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  
+  .wrap:has(.profile, h1) {
+    position: absolute;
+    top: $pad_hero;
+    left: $pad_hero;
+    
     h1 {
       font-size: 2rem;
-      padding: 0.16em 0.28em;
+      padding: 0.16em 0.28em !important;
       background-color: $teal_prime;
       color: #fff;
       width: fit-content;
       border-radius: 5px;
     }
-
-    // /////////////////////
-    .wrap:has( i) {
-      position: absolute;
-      bottom: $pad_hero;
-      right: $pad_hero;
-    }
-    img,
-    i {
-      width: $sz_icone;
-      color: azure;
-    }
   }
+  .wrap:has(.profile) {
+    background-color: $teal_prime;
+    width: max-content;
+    border-radius: $border_radius_containers;
+    display: flex !important;
+    align-items: center;
+    padding: 20px;
+    // transform: translateY(50%);
+
+    .profile {
+      width: 70px;
+      aspect-ratio: 1/1;
+      border: 4px solid whitesmoke;
+    }
+
+    
+  }
+  
+
+
+
+/// 2end  wrap
+  .wrap:has(button) {
+    width: max-content;
+    position: absolute;
+    top: $pad_hero;
+    right: $pad_hero;
+  }
+}

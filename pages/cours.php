@@ -14,7 +14,7 @@ if(!isset($_SESSION['user10MW'])){
 
 
 //////////////
-$title = "Cours";
+$titleCss = "cours";
 include_once "../inc/header.php"; 
 include_once "../inc/nav.php";
 ?>
@@ -38,7 +38,7 @@ include_once "../inc/nav.php";
                 </div>
             </div>
 
-            <?php include_once "../inc/tools.php" ?>
+            <?php include_once "partials/tools.php" ?>
         </section>
         
         <!-- =============================== -->

@@ -64,7 +64,7 @@
             <i class="fa-solid fa-file-pdf"></i>
 
             <div class="wrapper">
-                <a href="<?= SITE_PATH?>pages/glossaires.php">Glossaire technique - 23 - Terrage</a>
+                <a href="<?= SITE_PATH?>pages/glossaires.php" > Glossaire technique - 23 - Terrage </a>
                 <h2>Projet 1 - Glossaire technique, promo 23 - Terrage</h2>
                 <p>Le glossaire technique est constiuté au fur et à mesure de votre parcours <br /> de formation. Vous en êtes les contributeurs. </p>
                 <ul>

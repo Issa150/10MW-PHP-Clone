@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+  // display: block;
+  object-fit: cover;
+}
+// Genral Styling
+.fa_icone {
+  color: $teal_prime;
+  font-size: $sz_icone;
+}
+a {
+  // font-size: .85rem;
+  display: block;
+  padding: 0.4em 0.6em;
+  // padding-inline: 2em;
+  background: #fff;
+  color: $teal_prime;
+  margin-block: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+
+  &:hover {
+    background: #e3e3e3;
+  }
+}
+input:is([type="text"],[type="password"],[type="email"]),
+textarea,select {
+  // width: 100%;
+  max-width: 300px;
+  padding: 0.6em 1em;
+  // padding: 0.5em 0.7em;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid lightgrey;
+  margin-block: 0.5em;
+  border-radius: 8px;
+}
+// i.fa_icone{
+//     margin-right: 3px;
+// }
+i {
+  // width: 25px;
+  // margin-right: 0.3em;
+  margin-right: 1em;
+}
+button {
+  padding: 1em;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  // gradient colors can not be transitioned
+  background: linear-gradient(to top, lightgrey,lightgrey);
+  transition: .35s;
+  box-shadow: 0 0 10px  rgba(0,0,0,.2);
+  &:hover{
+    background: linear-gradient(to top, grey,lightgrey);
+  }
+}
+button:not(.asiderBtn) {
+  padding: 0.3em 0.7em;
+}
+
+ul{
+  li{
+    list-style: none;
+
+  }
+}

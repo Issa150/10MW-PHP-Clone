@@ -1,3 +1,8 @@
+@import "base/Variables";
+@import "base/Reset-style";
+// @import "components/Nav copy";
+@import "layout";
+
 .container {
   height: 100vh;
   background: url(../../imgs/bg-login.jpg) center/cover;

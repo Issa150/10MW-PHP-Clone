@@ -1,0 +1,103 @@
+@import "base/Variables";
+@import "base/Reset-style";
+@import "layout";
+
+
+.page.Profile {
+
+    grid-template-columns: auto;
+  
+    .main_wrapp {
+  
+      width: max(600px, 1100px);
+      margin-inline: auto;
+      overflow: visible;
+  
+      .hero_of_main {
+  
+        height: 170px;
+  
+        .wrap:has(.profile){
+          background-color: $teal_prime;
+          width: max-content;
+          border-radius: $border_radius_containers;
+          display: flex;
+          align-items: center;
+          padding: 10px;
+  
+          .profile{
+            width: 70px;
+            aspect-ratio: 1/1;
+          }
+        }
+  
+        .wrap:has(button){
+          width: max-content;
+          position: absolute;
+          top: $pad_hero;
+          right: $pad_hero;
+        }
+      }
+  
+  
+      .profile_infos {
+        padding: 1em;
+        // columns: 2;
+        column-count: 2;
+        // row-gap: 1em;
+        // column-gap: 1em;
+  
+        .card_info {
+          padding: 1em;
+          border: 1px solid lightgrey;
+          margin-bottom: 1em;
+          width: 100%;
+          display: inline-block;
+          border-radius: .6em;
+  
+          h3 {
+            font-size: 20px;
+            font-weight: 300;
+          }
+  
+          a.btn {
+            text-align: right;
+  
+          }
+  
+          a {
+            // text-decoration: underline;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+          }
+  
+          dl {
+            margin-block: 1em;
+            // display: grid;
+            // grid-template-rows: auto auto;
+  
+            dt {
+              font-weight: bolder;
+            }
+  
+            dd {
+              overflow-wrap: anywhere;
+            
+                  span{
+                    font-style: italic;
+                    background: $teal_light;
+                    width: max-content;
+                    padding: 0px 5px 2px 5px;
+                    color: #000;
+                    border-radius: 50px;
+                    margin-inline: 3px;
+                }
+              
+            }
+          }
+        }
+      }
+  
+    
+    }
+  }

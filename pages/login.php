@@ -45,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     login($pdo, $username, $password);
 }
 
-$title = "Login";
+$titleCss = "login";
+$titelMeta = "";
 include "../inc/header.php";
 ?>
 
@@ -70,8 +71,8 @@ include "../inc/header.php";
                     Nom d'utilisateur ou mot de pass <br> ne sont pas correct!
                 </p>
             </div>
-            <input type="text" name="username" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
-            <input type="password" onChange={inputHandler} placeholder="Mot de passe" name="password" />
+            <input type="text" name="username" value="issa" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
+            <input type="password" name="password" value="issa24" placeholder="Mot de passe"  />
             <div class="wrap">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">Se souvenir du nom d'utilisateurs</label>

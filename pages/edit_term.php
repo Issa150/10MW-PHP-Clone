@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$title = "Edit";
+$titleCss = "edit_term";
 include "../inc/header.php";
 include "../inc/nav.php";
 ?>

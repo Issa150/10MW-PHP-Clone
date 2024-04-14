@@ -1,0 +1,47 @@
+@import "../home_student.scss";
+
+.page{
+  .main_wrapp{
+    .body_of_main{
+
+
+      .content-row-container{
+
+        ul.wrap{
+      
+          &>li{
+            position: relative;
+      
+            
+            ul{
+              position: absolute;
+              top: 100%;
+              right: 0px;
+              width: 180px;
+              display: none;
+              background: lightgrey;
+              padding: 6px 10px;
+              border-radius: calc($border_radius_containers + 5px);
+      
+            }
+      
+            &:hover ul{
+              display: block;
+            }
+          }
+        }
+        
+        .row{
+          article:hover{
+            box-shadow: 0 0 4px rgb(186, 184, 184);
+          }
+        }
+        
+        i{
+          margin: 0;
+          padding: .3em .5em;
+        }
+      }
+    }
+  }
+}

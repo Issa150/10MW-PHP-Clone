@@ -58,6 +58,6 @@
     </a>
     <a href="#"><img src="<?= SITE_PATH?>assets/icons/badge-check.png" alt="icon academy" /> Badges</a>
     <a href="#"><img src="<?= SITE_PATH?>assets/icons/document-text.png" alt="icon academy" /> Notes</a>
-    <a href='/dashboard'><img src="<?= SITE_PATH?>assets/icons/home.png" alt="icon academy" />Tableau de bord</a>
+    <a href='<?=SITE_PATH?>pages/home_student.php'><img src="<?= SITE_PATH?>assets/icons/home.png" alt="icon academy" />Tableau de bord</a>
   </div>
 </div>

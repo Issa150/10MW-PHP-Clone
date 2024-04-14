@@ -1,0 +1,240 @@
+@import "base/Variables";
+@import "base/Reset-style";
+@import "layout";
+
+.page.home_teacher_stundet {
+  grid-template-columns: auto !important;
+  //   overflow: visible;
+  .main_wrapp {
+    width: clamp(500px, 100%, 1200px);
+    margin: 0 auto;
+    overflow: visible;
+
+    // ////////////////////
+    .hero_of_main {
+      height: 270px !important;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.318);
+      & > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .wrap:has(.profile) {
+        background-color: $teal_prime;
+        width: max-content;
+        border-radius: $border_radius_containers;
+        display: flex !important;
+        align-items: center;
+        padding: 20px;
+        // transform: translateY(50%);
+
+        .profile {
+          width: 70px;
+          aspect-ratio: 1/1;
+          border: 4px solid whitesmoke;
+        }
+      }
+
+      .wrap:has(button) {
+        width: max-content;
+        position: absolute;
+        top: $pad_hero;
+        right: $pad_hero;
+      }
+    }
+
+    .body_of_main {
+      .content-row-container {
+        margin: 2em 1em;
+
+        .wrap {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          h2 {
+            font-size: 3rem;
+            padding-block: 1em;
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+          }
+        }
+
+        .row {
+          display: flex;
+          gap: 10px;
+
+          & > article {
+            box-shadow: 0 0 10px rgb(186, 184, 184);
+            transition: 0.35s;
+
+            border: 8px solid whitesmoke;
+
+            &:hover {
+              scale: 1.005;
+              box-shadow: 0 0 15px rgb(186, 184, 184);
+            }
+          }
+
+          .event-card {
+            width: 250px;
+            padding: 1em;
+            border-radius: 1em;
+            background-color: #99b6ff;
+            background-image: radial-gradient(
+                at 83% 13%,
+                hsla(180, 63%, 79%, 1) 0px,
+                transparent 50%
+              ),
+              radial-gradient(
+                at 15% 73%,
+                hsla(255, 72%, 73%, 1) 0px,
+                transparent 50%
+              ),
+              radial-gradient(
+                at 85% 40%,
+                hsla(256, 74%, 68%, 1) 0px,
+                transparent 50%
+              );
+
+            .meta-data:nth-child(1) {
+              display: flex;
+              gap: 1em;
+              align-items: center;
+
+              .days-left {
+                font-size: 6rem;
+                font-family: "Bebas Neue", sans-serif;
+                font-weight: 400;
+                line-height: 0.9em;
+              }
+              p:nth-child(2) {
+                margin-bottom: 0.8em;
+              }
+            }
+            h3 {
+              font-size: 2rem;
+            }
+            .meta-data:nth-child(2) {
+              flex-direction: column;
+            }
+          }
+          .course-card {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            width: 303px;
+            aspect-ratio: 1/1.2;
+            overflow: hidden;
+            img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              transition: 0.35s;
+              // scale: 1;
+            }
+            .meta-data {
+              // background: linear-gradient(to top,rgba(0, 0, 0, 0.588),rgba(0, 0, 0, 0.388), transparent);
+              background: linear-gradient(
+                to top,
+                whitesmoke 5%,
+                rgba(255, 255, 255, 0.388) 80%,
+                transparent
+              );
+              position: relative;
+              width: 100%;
+              padding: 2em;
+              text-align: center;
+              color: $teal_prime;
+              h3 {
+                font-size: 1.7rem;
+              }
+            }
+
+            &:hover img {
+              scale: 1.1;
+            }
+          }
+
+          .homework-card {
+            width: 300px;
+            padding: 1em;
+            border-radius: 1em;
+            background-color: lavender;
+            .meta-data:nth-child(1) {
+              display: flex;
+              gap: 1em;
+              align-items: center;
+
+              .days-left {
+                font-size: 8rem;
+                font-family: "Bebas Neue", sans-serif;
+                font-weight: 400;
+                line-height: 0.9em;
+              }
+              p:nth-child(2) {
+                margin-bottom: 0.8em;
+              }
+            }
+            h3 {
+              font-size: 3rem;
+            }
+            .meta-data:nth-child(2) {
+              display: flex;
+              flex-direction: column;
+              background: blue;
+            }
+            .meta-info-author {
+              margin-top: 1em;
+              display: flex;
+              gap: 10px;
+              align-items: center;
+
+              img {
+                width: 35px;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+              }
+            }
+          }
+
+          .event-card,
+          .homework-card {
+            .meta-info-author {
+              margin-top: 1em;
+              display: flex;
+              gap: 10px;
+              align-items: center;
+
+              img {
+                width: 35px;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    background: darken($teal_prime, $sec_teal_num) !important;
+    // width: 100vw;
+    // margin-left: calc(-50vw + 50%);
+  }
+}
+// @media (min-width: 1200px) {
+//   .page {
+//     width: 80%;
+//     margin: 0 auto !important;
+//   }
+// }

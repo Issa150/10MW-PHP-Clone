@@ -1,16 +1,26 @@
-<?php 
+<?php
 include_once "config/variables.php";
 include_once "config/session_security.php";
 
-// ************  Login check  ************//
-if(!isset($_SESSION['user10MW'])){
-    header("Location: ".SITE_PATH."pages/login.php");
-}
-/////////////
-$title = "Dashboard";
-include_once "inc/header.php" ;
-include_once "inc/nav.php";
+include_once "config/connectionDB.php";
+include "config/functions.php";
 
+// ************  Login check  ************//
+if (!isset($_SESSION['user10MW'])) {
+    header("Location: " . SITE_PATH . "pages/login.php");
+}
+// include Tabs using URL params
+
+
+
+
+$currUser = getUserInfo($_SESSION['user10MW']['id']);
+
+
+/////////////
+$titleCss = "index";
+include_once "inc/header.php";
+include_once "inc/nav.php";
 
 ?>
 <!-- ---------------- -->
@@ -20,10 +30,11 @@ include_once "inc/nav.php";
 
     <div class="left_menu home active">
         <div class=wrap_content>
-            <a href="<?= SITE_PATH?>" class="red">
-            <i class="fa-solid fa-gauge-high fa_icone"></i>
-            Tableau de bord
+            <a href="<?= SITE_PATH ?>" class="red">
+                <i class="fa-solid fa-gauge-high fa_icone"></i>
+                Tableau de bord
             </a>
+            <a target="_blank" href="https://docs.google.com/document/d/16Fq14rkGvlQRplJySQGDT5lACBpYk8hSI5WcxcUmTPo/edit"><i class="fa-solid fa-file"></i> Documentation de ce site</a>
         </div>
     </div>
 
@@ -33,73 +44,48 @@ include_once "inc/nav.php";
 
 
     <div class="main_wrapp active">
+
         <section class="main_board">
-            <div class="hero_of_main">
-                <div class="wrap">
-                    <h1>10MW: Tableau de bord</h1>
-                </div>
-                <div class="wrap">
-                    <button>Modifier cette page</button>
-                </div>
-            </div>
+            <?php
+            // if (empty($_GET['subject'])) {
+            //     include_once "page/cours.php";
+            // }
+            // if (isset($_GET['subject'])) {
+            //     include_once  "page/cours-single.php";
+            // }
+            ?>
+
+
+            <!-- <div class="hero_of_main">
+        <div class="wrap">
+            <h1>10MW: Tableau de bord</h1>
+            <h1>Développeur Web/ Web Mobile</h1>
+        </div>
+
+        <div class="wrap">
+            <button>Modifier cette page</button>
+        </div>
+    </div> -->
             <!-- {/* ////////////////////////////: */} -->
-            <div class="main_content">
-                <div class="content_head">
-                    <h2>Mes cours</h2>
-                    <div>
-                        <div class="filters">
-                            <button>
-                                <i class="fa-solid fa-filter"></i>
-                                <span>Tout(sauf cours rtiré de l'affichage)</span>
-                                <i class="fa-solid fa-sort-down"></i>
-                            </button>
-                        </div>
-                        <div>
-                            <button>Nom</button>
-                            <button>Carte</button>
-                        </div>
-                    </div>
-                </div>
+            <?php
+                if($_SESSION['user10MW']['role'] == 'ROLE_USER'){
+                    include_once "page/cours.php";
+                }elseif($_SESSION['user10MW']['role'] == 'ROLE_TEACHER'){
+                    include_once "teachers/dashboard.teacher.php";
+                }elseif($_SESSION['user10MW']['role'] == 'ROLE_ADMIN'){
+                    include_once "admins/dashboard.admin.php";
+                }
+            ?>
+            <!-- {/* ////////////////////////////// */ -->
 
-                <!-- {/* //////////////////////// */} -->
 
-                <div class="main_contents">
-                    <div class="card">
-                        <img src="assets/imgs/pattern_1.jpg" alt="" />
 
-                        <div class="content">
-                            <div>
-                                <p>Approfondir</p>
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </div>
-
-                            <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
-                            <a href="<?= SITE_PATH?>pages/cours.php" class="red">
-                            Développeur Web/ Web Mobile
-                            </a>
-
-                            <div class="progression">
-                                <progress id="progression" value="32" max="100"></progress>
-                                <label htmlFor="progression">
-                                    <span>32%</span> progres
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- {/* ////////////////////////////////////////////// */ -->
-
-            <div class="badges_privet">
-                <h2>Derniers badges</h2>
-                <div class="content">
-                    <span>Vous n'avez pas de badge à afficher</span>
-                </div>
-            </div>
         </section>
+
+        <!-- ------------------------------------------- -->
         <?php include_once "inc/footer_page.php"; ?>
     </div>
 </main>
 
-<!-- ---------------- -->
+<!-- ------------------------------------------- -->
 <?php include_once "inc/footer.php" ?>
