@@ -21,9 +21,9 @@ $currUser = getUserInfo($_SESSION['user10MW']['id']);
 if (!empty($_GET['subject']) && isset($_GET['subject'])) {
 
     $_SESSION['currentSubject'] = $_GET['subject'];
-}else{
+} else {
     // Redirect to choose something
-    header( 'Location:' . SITE_PATH ) ; 
+    header('Location:' . SITE_PATH);
 }
 
 $subject = $_SESSION['currentSubject'];
@@ -32,6 +32,9 @@ $titleCss = "cours-single";
 include_once "../inc/header.php";
 include_once "../inc/nav.php";
 
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '</pre>';
 
 ?>
 <!-- ---------------- -->
@@ -95,33 +98,35 @@ ______________$$$$$$$$$$$$_______________
 
                 <div class="tab-head-container">
                     <ul>
-                        <li><a href="cours-single.php?<?= $subject ?>&stream">Flux</a></li>
-                        <li><a href="cours-single.php?<?= $subject ?>&homework">À faire</a></li>
-                        <li><a href="cours-single.php?<?= $subject ?>&collegues">Collègues</a></li>
-                        <li><a href="cours-single.php?<?= $subject ?>&resources">Resources</a></li>
-                        <li><a href="cours-single.php?<?= $subject ?>&notes">Notes</a></li>
+                        <!-- Probleme for not hving condition if tab exist or not -->
+                        <li><a class="<?= (!isset($_GET['tab']) || $_GET['tab'] == "stream") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=stream">Flux</a></li>
+                        <li><a class="<?= ($_GET['tab'] == "homework") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=homework">À faire</a></li>
+                        <li><a class="<?= ($_GET['tab'] == "collegues") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=collegues">Collègues</a></li>
+                        <li><a class="<?= ($_GET['tab'] == "resources") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=resources">Resources</a></li>
+                        <li><a class="<?= ($_GET['tab'] == "notes") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=notes">Notes</a></li>
                     </ul>
                 </div>
 
                 <!-- -------- -->
 
-                <?php
+                <div class="tab-body-container">
+                    <?php
 
-                if (isset($_GET['stream']) || !isset($_GET['stream'])) {
-                    include_once "partials/stream.php";
-                } elseif (isset($_GET['homework'])) {
-                    include_once "partials/homework.php";
-                } elseif (isset($_GET['collegues'])) {
-                    include_once "partials/collegues.php";
-                } elseif (isset($_GET['resources'])) {
-                    include_once "partials/resources.php";
-                }
-                if (isset($_GET['notes'])) {
-                    include_once "partials/notes.php";
-                }
+                    if (!isset($_GET['tab']) || $_GET['tab'] == "stream") {
+                        include_once "partials/stream.php";
+                    } elseif ($_GET['tab'] == "homework") {
+                        include_once "partials/homework.php";
+                    } elseif ($_GET['tab'] == "collegues") {
+                        include_once "partials/collegues.php";
+                    } elseif ($_GET['tab'] == "resources") {
+                        include_once "partials/resources.php";
+                    } elseif ($_GET['tab'] == "notes") {
+                        include_once "partials/notes.php";
+                    }
 
-                ?>
 
+                    ?>
+                </div>
 
             </div>
 

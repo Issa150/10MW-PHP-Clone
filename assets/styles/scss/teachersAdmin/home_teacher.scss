@@ -1,47 +1,47 @@
-@import "../home_student.scss";
+// @import "../home_student.scss";
 
-.page{
-  .main_wrapp{
-    .body_of_main{
+// .page{
+//   .main_wrapp{
+//     .body_of_main{
 
 
-      .content-row-container{
+//       .content-row-container{
 
-        ul.wrap{
+//         ul.wrap{
       
-          &>li{
-            position: relative;
+//           &>li{
+//             position: relative;
       
             
-            ul{
-              position: absolute;
-              top: 100%;
-              right: 0px;
-              width: 180px;
-              display: none;
-              background: lightgrey;
-              padding: 6px 10px;
-              border-radius: calc($border_radius_containers + 5px);
+//             ul{
+//               position: absolute;
+//               top: 100%;
+//               right: 0px;
+//               width: 180px;
+//               display: none;
+//               background: lightgrey;
+//               padding: 6px 10px;
+//               border-radius: calc($border_radius_containers + 5px);
       
-            }
+//             }
       
-            &:hover ul{
-              display: block;
-            }
-          }
-        }
+//             &:hover ul{
+//               display: block;
+//             }
+//           }
+//         }
         
-        .row{
-          article:hover{
-            box-shadow: 0 0 4px rgb(186, 184, 184);
-          }
-        }
+//         .row{
+//           article:hover{
+//             box-shadow: 0 0 4px rgb(186, 184, 184);
+//           }
+//         }
         
-        i{
-          margin: 0;
-          padding: .3em .5em;
-        }
-      }
-    }
-  }
-}
+//         i{
+//           margin: 0;
+//           padding: .3em .5em;
+//         }
+//       }
+//     }
+//   }
+// }

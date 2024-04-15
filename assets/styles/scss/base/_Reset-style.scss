@@ -27,6 +27,10 @@ a {
   &:hover {
     background: #e3e3e3;
   }
+
+  &.active{
+    background: #e3e3e3;
+  }
 }
 input:is([type="text"],[type="password"],[type="email"]),
 textarea,select {

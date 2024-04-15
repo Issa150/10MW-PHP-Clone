@@ -34,7 +34,7 @@
                                     <p class="days-left">15</p>
                                     <p>jours restants</p>
                                 </div>
-                                <h3>Évavluation Front</h3>
+                                <h3>Évaluation Front</h3>
                                 <div class="meta-data">
                                     <p>15-04-2024</p>
                                     <div class="meta-info-author">
