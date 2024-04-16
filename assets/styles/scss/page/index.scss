@@ -51,7 +51,8 @@
         gap: 10px;
 
         & > article {
-          box-shadow: 0 0 10px rgb(186, 184, 184);
+          // box-shadow: 0 0 10px rgb(186, 184, 184);
+          box-shadow: 0 0 10px rgba(0, 82, 89, 0.30);
           transition: 0.35s;
 
           border: 8px solid whitesmoke;
@@ -59,6 +60,7 @@
           &:hover {
             translate: 0 -5px;
             box-shadow: 0 0 15px rgb(186, 184, 184);
+            box-shadow: 0 0 15px rgba(0, 82, 89, 0.30);
           }
         }
 
@@ -163,6 +165,7 @@
         outline: 1px solid lightgrey;
         border-radius: $border_r;
         transition: .25s;
+        box-shadow: 0 0 10px lightgrey;
 
         > img {
           aspect-ratio: 1/0.4;

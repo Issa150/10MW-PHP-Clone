@@ -98,12 +98,12 @@ ______________$$$$$$$$$$$$_______________
 
                 <div class="tab-head-container">
                     <ul>
-                        <!-- Probleme for not hving condition if tab exist or not -->
+                        
                         <li><a class="<?= (!isset($_GET['tab']) || $_GET['tab'] == "stream") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=stream">Flux</a></li>
-                        <li><a class="<?= ($_GET['tab'] == "homework") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=homework">À faire</a></li>
-                        <li><a class="<?= ($_GET['tab'] == "collegues") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=collegues">Collègues</a></li>
-                        <li><a class="<?= ($_GET['tab'] == "resources") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=resources">Resources</a></li>
-                        <li><a class="<?= ($_GET['tab'] == "notes") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=notes">Notes</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "homework") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=homework">À faire</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "collegues") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=collegues">Collègues</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "resources") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=resources">Resources</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "notes") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=notes">Notes</a></li>
                     </ul>
                 </div>
 
