@@ -3,7 +3,7 @@
   function getUserInfo($userId){
     $db = new Database();
     $pdo = $db->connect();
-    $sql = "SELECT * FROM users3 WHERE id = :id";
+    $sql = "SELECT * FROM members WHERE id = :id";
     $request = $pdo->prepare($sql);
     $request->execute([
         ':id' => $userId 

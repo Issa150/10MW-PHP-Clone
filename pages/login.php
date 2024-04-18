@@ -7,7 +7,8 @@ include "../config/session_security.php";
 function login($pdo, $username, $password)
 {
 
-    $query = "SELECT id,name,lastName,role,password,email,country,city,image_profile,interests FROM users3 WHERE name = :name LIMIT 1";
+    // $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile, FROM members WHERE first_name = :name LIMIT 1";
+    $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile FROM members WHERE first_name = :name LIMIT 1";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':name', $username);
     $stmt->execute();

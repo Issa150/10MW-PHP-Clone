@@ -10,7 +10,7 @@ if (isset($_GET['home'])) {
     // if ($_SESSION['user10MW']['role'] == "ROLE_ADMIN" || $_SESSION['user10MW']['role'] == "ROLE_TEACHER") {
     //     header('Location: ' . SITE_PATH . 'teachers/home_teacher.php');
     // } else
-    if (isset($_SESSION['user10MW']['role']) == "ROLE_USER") {
+    if (isset($_SESSION['user10MW']['role']) == "student") {
         header('Location:'.SITE_PATH.'pages/home_student.php');
     }
 }
@@ -29,7 +29,7 @@ if (isset($_GET['home'])) {
 
         <li><img class='dixMentionImg big_icon' src="<?= SITE_PATH ?>assets/icons/Logo_10MW_noir_fond_blanc.jpg" alt="" /></li>
         <?php
-        if ($_SESSION['user10MW']['role'] === 'ROLE_TEACHER' || $_SESSION['user10MW']['role'] === 'ROLE_ADMIN') { ?>
+        if ($_SESSION['user10MW']['role'] === 'teacher' || $_SESSION['user10MW']['role'] === 'admin') { ?>
             <li><a href="<?= SITE_PATH ?>teachers/home_teacher.php">Administration du site</a></li>
         <?php } ?>
 
@@ -79,7 +79,7 @@ if (isset($_GET['home'])) {
                 <p>
                     <?php
                     if (isset($_SESSION["user10MW"])) {
-                        echo ucfirst($_SESSION["user10MW"]['name']);
+                        echo ucfirst($_SESSION["user10MW"]['first_name']);
                     } else {
                         echo "<a href='" . SITE_PATH . "pages/login.php'>Login</a>";
                     }
@@ -110,3 +110,8 @@ if (isset($_GET['home'])) {
         </li>
     </ul>
 </nav>
+<?php
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '</pre>';
+?>

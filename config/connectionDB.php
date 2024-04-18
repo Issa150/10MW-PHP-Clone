@@ -36,7 +36,7 @@ class Database {
         $this->host = 'localhost';
         $this->user = 'root';
         $this->password = "";
-        $this->dbname = 'first_db';
+        $this->dbname = '10mw';
     }
 
     public function connect() {

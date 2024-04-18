@@ -14,26 +14,26 @@ include_once "../config/functions.php";
 $userdInfo = getUserInfo($_SESSION['user10MW']['id']);
 
 //************  Function for Updating Profile infos
-function updateUserInfo($id, $firstName, $lastName, $email, $country, $city, $interests)
+function updateUserInfo($id, $firstName, $lastName, $email, $country, $city)
 {
     $db = new Database();
     $pdo = $db->connect();
-    $sql = "UPDATE users3 SET 
-            name = :name, lastName = :lastName, email = :email, country = :country, city = :city, interests = :interests
+    $sql = "UPDATE members SET 
+            first_name = :name, last_name = :last_name, email = :email, country = :country, city = :city 
             WHERE id = :id";
     $request =  $pdo->prepare($sql);
     $request->execute([
         ':name' => $firstName,
-        ':lastName' => $lastName,
+        ':last_name' => $lastName,
         ':email' => $email,
         ':country' => $country,
         ':city' => $city,
-        ':interests' => $interests,
+        // ':interests' => $interests,
         'id' => $id
     ]);
 
     // Fetch the updated user data from the database
-    $query = "SELECT id,name,lastName,email,country,city,image_profile,interests FROM users3 WHERE id = :id LIMIT 1";
+    $query = "SELECT id,first_name,last_name,email,country,city,image_profile FROM members WHERE id = :id LIMIT 1";
     $stmt = $pdo->prepare($query);
     // $stmt->bindParam(':id', $userId);
     $stmt->execute([":id" => $id]);
@@ -57,7 +57,7 @@ if (!empty($_POST)) {
         $imageProfile = $_FILES['new_profile_img']['name'];
         $db = new Database();
         $pdo = $db->connect();
-        $sql = "UPDATE users3 SET image_profile = :image_profile WHERE id = :id";
+        $sql = "UPDATE members SET image_profile = :image_profile WHERE id = :id";
         $request = $pdo->prepare($sql);
         $request->execute([
             ':id' => $_SESSION['user10MW']['id'],
@@ -118,7 +118,7 @@ include_once "../inc/nav.php";
                                     <label for="firstName">Prénom</label>
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                 </div>
-                                <input name="name" id="firstName" type="text" placeholder="Prénom..." value="<?= isset($userdInfo['name']) ? $userdInfo['name'] : "" ?>" />
+                                <input name="name" id="firstName" type="text" placeholder="Prénom..." value="<?= isset($userdInfo['first_name']) ? $userdInfo['first_name'] : "" ?>" />
                             </div>
 
                             <div class="child_wrap">
@@ -126,7 +126,7 @@ include_once "../inc/nav.php";
                                     <label for="lastName">Nom de famille</label>
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                 </div>
-                                <input name="lastName" id="lastName" type="text" placeholder="Nom de famille..." value="<?= isset($userdInfo['lastName']) ? $userdInfo['lastName'] : "" ?>" />
+                                <input name="lastName" id="lastName" type="text" placeholder="Nom de famille..." value="<?= isset($userdInfo['last_name']) ? $userdInfo['last_name'] : "" ?>" />
                             </div>
 
                             <div class="child_wrap">
