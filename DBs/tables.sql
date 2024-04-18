@@ -18,7 +18,7 @@
     );
 
     -- AcademicYears table
-    CREATE TABLE AcademicYears (
+    CREATE TABLE AcademicYears (    
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         start_date DATE NOT NULL,
         end_date DATE NOT NULL
@@ -143,9 +143,5 @@
         FOREIGN KEY (member_id) REFERENCES Members(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (class_id) REFERENCES Classes(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
-
-
-
-
 
 

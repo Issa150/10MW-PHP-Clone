@@ -13,6 +13,23 @@
 
 }
 
-// echo '<pre>';
-// var_dump();
-// echo '</pre>';
+
+
+function getInfoById($table, $col, $userId){
+  $db = new Database();
+  $pdo = $db->connect();
+  $sql = "SELECT * FROM $table WHERE $col = :id";
+  $request = $pdo->prepare($sql);
+  $request->execute([
+      ':id' => $userId 
+  ]);
+  $res = $request->fetchAll();
+  return $res;
+
+}
+
+function dd($var){
+  echo '<pre>';
+  var_dump($var);
+  echo '</pre>';
+}
