@@ -37,7 +37,7 @@
           </div>
           <div class="right">
             <h2>
-              <?= isset($_SESSION["user10MW"]) ?ucfirst($_SESSION["user10MW"]['name']) ." ". strtoupper($_SESSION["user10MW"]['lastName']) : ""; ?>
+              <?= isset($_SESSION["user10MW"]) ?ucfirst($_SESSION["user10MW"]['first_name']) ." ". strtoupper($_SESSION["user10MW"]['last_name']) : ""; ?>
             </h2>
             <ul>
               <li>Pays: <span><?= isset($_SESSION["user10MW"]) ? $_SESSION["user10MW"]['country'] :""; ?></span></li>
