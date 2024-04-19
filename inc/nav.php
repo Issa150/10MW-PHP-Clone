@@ -29,7 +29,7 @@ if (isset($_GET['home'])) {
 
         <li><img class='dixMentionImg big_icon' src="<?= SITE_PATH ?>assets/icons/Logo_10MW_noir_fond_blanc.jpg" alt="" /></li>
         <?php
-        if ($_SESSION['user10MW']['role'] === 'teacher' || $_SESSION['user10MW']['role'] === 'admin') { ?>
+        if ($_SESSION['user10MW']['role'] == 'teacher' || $_SESSION['user10MW']['role'] == 'admin') { ?>
             <li><a href="<?= SITE_PATH ?>teachers/home_teacher.php">Administration du site</a></li>
         <?php } ?>
 
@@ -88,7 +88,7 @@ if (isset($_GET['home'])) {
                 <img class='profile' src="
                 <?= (isset($_SESSION['user10MW']))
                     ? SITE_PATH . "assets/uploads/user/" . $_SESSION['user10MW']['image_profile']
-                    : SITE_PATH . "assets/imgs/imgPlaceholder01.png";
+                    : SITE_PATH . "assets/imgs/placeholders/imgPlaceholder01.png";
                 ?>" alt="" />
 
                 <img class='s_Icon' src="assets/icons/sort-down-solid.svg" alt="" />

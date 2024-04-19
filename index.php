@@ -71,7 +71,7 @@ include_once "inc/nav.php";
                 if($_SESSION['user10MW']['role'] == 'student'){
                     include_once "page/cours.php";
                 }elseif($_SESSION['user10MW']['role'] == 'teacher'){
-                    include_once "teachers/dashboard.teacher.php";
+                    include_once "teachers/home_teacher.php";
                 }elseif($_SESSION['user10MW']['role'] == 'admin'){
                     include_once "admins/dashboard.admin.php";
                 }

@@ -2,27 +2,33 @@
 include_once "../config/variables.php";
 include "../config/connectionDB.php";
 include "../config/session_security.php";
+// include_once "../config/functions.php";
 
 ////////   function is ready to be moved to another file    ////////////
 function login($pdo, $username, $password)
 {
 
-    // $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile, FROM members WHERE first_name = :name LIMIT 1";
-    $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile FROM members WHERE first_name = :name LIMIT 1";
+    // $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile FROM members WHERE first_name = :name LIMIT 1";
+    $query = "SELECT members.*, students.member_id AS 'the_student_id', teachers.member_id AS 'the_teacher_id'
+    FROM members
+    LEFT JOIN students ON members.id = students.member_id
+    LEFT JOIN teachers ON members.id = teachers.member_id
+    WHERE first_name = :name
+    LIMIT 1";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':name', $username);
     $stmt->execute();
     $userData = $stmt->fetch();
-
     if ($userData) {
         if (password_verify($password, $userData["password"])) {
             $_SESSION["user10MW"] = $userData;
+            $_SESSION["user10MW_metaInfo"] = "";
 
-            if($userData['role'] == 'ROLE_USER'){
+            if($userData['role'] == 'student'){
                 header("Location: ".SITE_PATH . "index.php"); 
-            }elseif($userData['role'] === 'ROLE_TEACHER'){
+            }elseif($userData['role'] === 'teacher'){
                 header("Location: ".SITE_PATH."teachers/");
-            }elseif($userData['role'] === 'ROLE_ADMIN' || $userData['role'] === 'ROLE_ADMIN_MAIN'){
+            }elseif($userData['role'] === 'admin' || $userData['role'] === 'admin'){
                 header("Location: ".SITE_PATH."admins/");
             }
 
@@ -54,12 +60,6 @@ include "../inc/header.php";
 <!-- ---------------- -->
 
 <div class="container">
-    <div class="demo_wrapper">
-        <span>Demo</span>
-        <div>
-            <a href="<?= SITE_PATH ?>">Accès sans connection</a>
-        </div>
-    </div>
     <div class="login_wrapper">
         <img src="<?= SITE_PATH ?>assets/imgs/big-logo-removebg.png" alt="" />
 

@@ -33,7 +33,13 @@ function updateUserInfo($id, $firstName, $lastName, $email, $country, $city)
     ]);
 
     // Fetch the updated user data from the database
-    $query = "SELECT id,first_name,last_name,email,country,city,image_profile FROM members WHERE id = :id LIMIT 1";
+    // $query = "SELECT id,first_name,role,last_name,email,country,city,image_profile FROM members WHERE id = :id LIMIT 1";
+    $query = "SELECT members.*, students.id AS 'the_student_id', teachers.id AS 'the_teacher_id'
+    FROM members
+    LEFT JOIN students ON members.id = students.member_id
+    LEFT JOIN teachers ON members.id = teachers.member_id
+    WHERE members.id = :id
+    LIMIT 1";
     $stmt = $pdo->prepare($query);
     // $stmt->bindParam(':id', $userId);
     $stmt->execute([":id" => $id]);

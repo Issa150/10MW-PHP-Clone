@@ -6,23 +6,26 @@
 // @import "../config/Variables";
 
 .wrap:has(h1) {
-    position: absolute;
-    top: $pad_hero;
-    left: $pad_hero;
-  }
-  .wrap:has(img, i) {
-    position: absolute;
-    bottom: $pad_hero;
-    right: $pad_hero;
-  }
-  h1 {
-    font-size: 2rem;
-    padding: 0.16em 0.28em;
-    color: $teal_prime;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .coursPage .main_wrapp footer{
-    background: darken($teal_prime, $sec_teal_num) !important;
-  }
+  position: absolute;
+  top: $pad_hero;
+  left: $pad_hero;
+}
+
+.wrap:has(img, i) {
+  position: absolute;
+  bottom: $pad_hero;
+  right: $pad_hero;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: 0.16em 0.28em;
+  color: $teal_prime;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.coursPage .main_wrapp footer {
+  background: darken($teal_prime, $sec_teal_num) !important;
+}
+

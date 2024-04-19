@@ -1,176 +1,181 @@
 <?php
-include_once "../config/variables.php";
-include_once "../config/session_security.php";
+// function getField($id_field)
+// {
+//     $db = new Database();
+//     $pdo = $db->connect();
+//     $sql = "SELECT name FROM studyfields WHERE id = :id";
+//     $request = $pdo->prepare($sql);
+//     $request->execute([
+//         ':id' => $id_field
+//     ]);
+//     $res = $request->fetch();
+//     return $res;
+// }
 
-//************  Login check  ************//
-if (!isset($_SESSION['user10MW'])) {
-    header("Location: " . SITE_PATH . "pages/login.php");
-} elseif ($_SESSION['user10MW']['role'] === "ROLE_USER") {
-    header("Location: " . SITE_PATH);
-}
-/////////////
-include_once "../config/connectionDB.php";
-include "../config/functions.php";
-
-$titleCss = "home_teacher";
-include_once "../inc/header.php";
-include_once "../inc/nav.php";
-
-
-
-////////////////////////////////////
-
-//************  All functions are here  ************//
-
-$currUser = getUserInfo($_SESSION['user10MW']['id']);
-
+// dd($_SESSION);
 ?>
-<main class="page home_teacher">
 
-    <?php
-    if (!$titleCss = 'home_teacher' || !$titleCss = 'home_teacher' || !$titleCss = 'home_teacher') {
-        include_once "../inc/aside.php";
-    }
-    ?>
+<!-- ---------------------------------------------------------------------------- -->
+<div class='hero_of_main'>
+    <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg.jpeg" alt="">
 
-    <div class="main_wrapp">
-        <section class="main_board">
+    <div class="wrap">
+        <img class='profile' src="<?= (isset($currUser['image_profile']))
+                                        ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
+                                        : SITE_PATH . "assets/imgs/placeholders/imgPlaceholder01.png";
+                                    ?>" alt="" />
 
-            <div class='hero_of_main'>
-                <img src="<?= SITE_PATH ?>assets/imgs/abstract_1.jpg" alt="">
-
-                <div class="wrap">
-                    <img class='profile' src="<?= (isset($currUser['image_profile']))
-                                                    ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
-                                                    : SITE_PATH . "assets/imgs/imgPlaceholder01.png";
-                                                ?>" alt="" />
-
-                    <h1>Développeur web & web mobile</h1>
-                </div>
-
-                <div class="wrap">
-                    <button>Réinitialiser la page</button>
-                </div>
-
-
-            </div>
-
-            <div class="body_of_main">
-                <div class="content-row-container">
-                    <ul class="wrap">
-                        <li><h2>Les evenements plus recents</h2></li>
-                        <li>
-                            <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                            <ul>
-                                <li><a>Voir tous</a></li>
-                                <li><a>Ajouter un devoir</a></li>
-                                <li><a>Cacher le block</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="row">
-                        <article class="event-card">
-                            <div class="meta-data">
-                                <p class="days-left">15</p>
-                                <p>jours restants</p>
-                            </div>
-                            <h3>Évavluation Front</h3>
-                            <div class="meta-data">
-                                <p>15-04-2024</p>
-                                <div class="meta-info-author">
-                                    <img src="<?= SITE_PATH ?>assets/imgs/boy2.jpg" alt="">
-                                    <p>Gabrielle BRENNER</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                </div>
-
-                <div class="content-row-container">
-                    <ul class="wrap">
-                        <li><h2>Les cours</h2></li>
-                        <li>
-                            <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                            <ul>
-                                <li><a>Voir tous</a></li>
-                                <li><a>Ajouter un cours</a></li>
-                                <li><a>Cacher le block</a></li>
-
-                            </ul>
-                        </li>
-
-                    </ul>
-                    <div class="row">
-                        <article class="course-card">
-                            <img src="<?= SITE_PATH ?>assets/imgs/student-1.jpg" alt="">
-                            <div class="meta-data">
-                                <h3>Mathemathique 2</h3>
-                            </div>
-                        </article>
-                    </div>
-
-                </div>
-
-                <!-- <div class="content-row-container">
-                    <ul class="wrap">
-                        <li>
-                            <h2>Les devoires</h2>
-                        </li>
-
-
-                        <li>
-                            <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                            <ul>
-                                <li><a>Voir tous</a></li>
-                                <li><a>Ajouter un devoir</a></li>
-                                <li><a>Cacher le block</a></li>
-
-                            </ul>
-                        </li>
-
-                    </ul>
-                    <div class="row">
-                        <article class="homework-card">
-                            <div class="meta-data">
-                                <p class="days-left">02</p>
-                                <p>jours restants</p>
-                            </div>
-                            <h3>Hover img avec JS</h3>
-                            <div class="meta-data">
-                                <p>15-04-2024</p>
-                                <div class="meta-info-author">
-                                    <img src="<?= SITE_PATH ?>assets/imgs/boy2.jpg" alt="">
-                                    <p>Gabrielle BRENNER</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                </div> -->
-
-            </div>
-
-
-        </section>
+        <div>
+            <?php echo "<h1>".$_SESSION['user10MW']['first_name'] . " " . $_SESSION['user10MW']['last_name'] . "</h1>";?>
+        </div>
     </div>
 
-    <?php include "../inc/footer_page.php"; ?>
-</main>
+    <div class="wrap">
+        <button>Réinitialiser la page</button>
+    </div>
 
 
+</div>
 
 
+<div class="main_content">
 
+    <!-- Event cards -->
+    <div class="event-notif-container">
 
+        <div class="content-row-container">
+            <div class="wrap">
+                <h2>Les evenements plus recents</h2>
+                <a>Voire tous</a>
+            </div>
+            <div class="row">
+                <article class="event-card">
+                    <div class="meta-data">
+                        <p class="days-left">15</p>
+                        <p>jours restants</p>
+                    </div>
+                    <h3>Évaluation Front</h3>
+                    <div class="meta-data">
+                        <p>15-04-2024</p>
+                        <div class="meta-info-author">
+                            <img src="<?= SITE_PATH ?>assets/imgs/boy2.jpg" alt="">
+                            <p>Gabrielle BRENNER</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
+        </div>
+    </div>
 
+    <!-- Cours cards -->
+    <div class="cours-container">
 
+        <div class="section-head">
+            <h2>Mes cours</h2>
+            <!-- <div>
+                            <div class="filters">
+                                <button>
+                                    <i class="fa-solid fa-filter"></i>
+                                    <span>Tout(sauf cours rtiré de l'affichage)</span>
+                                    <i class="fa-solid fa-sort-down"></i>
+                                </button>
+                            </div>
+                            <div>
+                                <button>Nom</button>
+                                <button>Carte</button>
+                            </div>
+                        </div> -->
+        </div>
 
+        <!-- {/* //////////////////////// */} -->
 
+        <div class="section-body">
 
+            <!-- Carte du cours -->
+            <div class="card">
+                <img src="assets/imgs/html.jpg" alt="" />
 
+                <div class="content">
+                    <div>
+                        <p>Approfondir</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
 
-<!-- ---------------- -->
-<?php include "../inc/footer.php" ?>
+                    <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
+                    <!-- <a href="<? //= SITE_PATH 
+                                    ?>page/cours-single.php?subject=html" class="red"> -->
+                    <a href="<?= SITE_PATH ?>pages/cours.php" class="red">
+                        HTML5
+                    </a>
+
+                    <div class="progression">
+                        <progress id="progression" value="100" max="100"></progress>
+                        <label htmlFor="progression">
+                            <span>Compeleté</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- ------------- -->
+            <!-- Glossaire -->
+            <div class="card">
+                <img src="assets/imgs/abstract_2.jpg" alt="" />
+
+                <div class="content">
+                    <div>
+                        <p>Projet progressive</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+
+                    <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
+                    <a href="<?= SITE_PATH ?>pages/glossaires.php" class="red">
+                        Glossaire
+                    </a>
+
+                    <div class="progression">
+                        <!-- <progress id="progression" value="83" max="100"></progress> -->
+                        <label htmlFor="progression">
+
+                            <!-- <span>70%</span> progres -->
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- ------------- -->
+            <!-- Create new Cards -->
+            <?php
+            $datas = getInfoById("teachers", "class_id", 5);
+            foreach ($datas as $data) {
+            ?>
+                <div class="card">
+                    <img src="assets/imgs/abstract_2.jpg" alt="cours image" />
+
+                    <div class="content">
+                        <div>
+                            <p>Approfondir</p>
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+
+                        <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
+                        <!-- <a href="<? //= SITE_PATH 
+                                        ?>page/cours-single.php?subject=html" class="red"> -->
+                        <a href="<?= SITE_PATH ?>page/cours-single.php?subject=<?= $data['name'] ?>" class="red">
+                            <?= $data['name'] ?>
+                        </a>
+
+                        <div class="progression">
+                            <!-- <progress id="progression" value="100" max="100"></progress> -->
+                            <label htmlFor="progression">
+                                <span>Status progression</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+        </div>
+
+    </div>
+</div>

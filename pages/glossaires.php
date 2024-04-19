@@ -58,7 +58,7 @@ function getVocabularies(PDO $pdo, string $order,int $limit ): string{
                 <span>Termes associés</span><small>" . $tagList . "</small>
                 </div>
                 <div class='meta_data'>
-                    <img class='profile' src=" . (isset($row['image_profile']) ? (SITE_PATH. 'assets/uploads/user/'.$row['image_profile']) : SITE_PATH. "assets/imgs/profile-placeholder.jpg") . " alt='' />
+                    <img class='profile' src=" . (isset($row['image_profile']) ? (SITE_PATH. 'assets/uploads/user/'.$row['image_profile']) : SITE_PATH. "assets/imgs/placeholders/profile-placeholder.jpg") . " alt='' />
                     <div class='middle_wrapper'>
                         <p><span class='meta_title'>Author:</span>"  . ucfirst($row['name']) . "</p>
                         <p>
