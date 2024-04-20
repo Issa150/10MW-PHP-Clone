@@ -17,16 +17,17 @@
 
 <!-- ---------------------------------------------------------------------------- -->
 <div class='hero_of_main'>
-    <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg.jpeg" alt="">
+    <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg" alt="">
 
     <div class="wrap">
-        <img class='profile' src="<?= (isset($currUser['image_profile']))
+        <img class='profile' src="<?= (!empty($currUser['image_profile']))
                                         ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
                                         : SITE_PATH . "assets/imgs/placeholders/imgPlaceholder01.png";
                                     ?>" alt="" />
 
         <div>
             <?php echo "<h1>".$_SESSION['user10MW']['first_name'] . " " . $_SESSION['user10MW']['last_name'] . "</h1>";?>
+            <p>Formateurs</p>
         </div>
     </div>
 

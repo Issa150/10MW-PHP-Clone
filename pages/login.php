@@ -9,14 +9,19 @@ function login($pdo, $username, $password)
 {
 
     // $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile FROM members WHERE first_name = :name LIMIT 1";
-    $query = "SELECT members.*, students.member_id AS 'the_student_id', teachers.member_id AS 'the_teacher_id'
-    FROM members
-    LEFT JOIN students ON members.id = students.member_id
-    LEFT JOIN teachers ON members.id = teachers.member_id
-    WHERE first_name = :name
-    LIMIT 1";
+    $query = "SELECT members.*, 
+                    students.member_id AS 'the_student_id', 
+                    students.study_field_id, 
+                    teachers.member_id AS 'the_teacher_id', 
+                    studyfields.image_banner AS 'field_banner'
+                FROM members
+                LEFT JOIN students ON members.id = students.member_id
+                LEFT JOIN teachers ON members.id = teachers.member_id
+                LEFT JOIN studyfields ON studyfields.id = students.study_field_id
+                WHERE first_name = :first_name
+                LIMIT 1";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':name', $username);
+    $stmt->bindParam(':first_name', $username);
     $stmt->execute();
     $userData = $stmt->fetch();
     if ($userData) {

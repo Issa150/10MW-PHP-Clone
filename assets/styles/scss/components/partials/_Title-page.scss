@@ -26,6 +26,9 @@
   height: 270px;
   position: relative;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.318);
+
+
+
   & > img {
     position: absolute;
     top: 0;
@@ -47,6 +50,10 @@
       color: #fff;
       width: fit-content;
       border-radius: 5px;
+    }
+
+    p{
+      color: $clr_prime_match;
     }
   }
   .wrap:has(.profile) {

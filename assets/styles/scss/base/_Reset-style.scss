@@ -23,6 +23,7 @@ a {
   margin-block: 5px;
   text-decoration: none;
   border-radius: 5px;
+  cursor: pointer;
 
   &:hover {
     background: #e3e3e3;
@@ -50,6 +51,7 @@ textarea,select {
 i {
   // width: 25px;
   // margin-right: 0.3em;
+  color: $teal_prime;
   margin-right: 1em;
 }
 button {

@@ -23,6 +23,19 @@
     (8, 'Sophia', 'Lee', 'sophialee', 'password753', 'sophialee@example.com', 'female', '1994-12-01', 'profile8.jpg', 'United States', 'Cambridge', 2, 'student'),
     (9, 'Alexander', 'Nguyen', 'alexandernguyen', 'password951', 'alexandernguyen@example.com', 'male', '1987-02-28', 'profile9.jpg', 'United States', 'Chicago', 9, 'teacher'),
     (10, 'Isabella', 'Patel', 'isabellapatel', 'password357', 'isabellapatel@example.com', 'female', '1996-07-18', 'profile10.jpg', 'United Kingdom', 'Cambridge', 8, 'student');
+    --Memebers french
+    INSERT INTO members (first_name, last_name, user_name, password, email, gender, birth_date, created_at, image_profile, country, city, location_id, role)
+VALUES
+('Maxime', 'Dupont', 'mdupont', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'mdupont@email.com', 'male', '1990-05-12', NOW(), 'profile1.jpg', 'France', 'Paris', 11, 'student'),
+('Amélie', 'Durand', 'adurand', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'adurand@email.com', 'female', '1985-08-03', NOW(), 'profile2.jpg', 'France', 'Lyon', 12, 'teacher'),
+('Lucas', 'Martin', 'lmartin', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'lmartin@email.com', 'male', '1995-11-25', NOW(), 'profile3.jpg', 'France', 'Marseille', 13, 'student'),
+('Juliette', 'Leroy', 'jleroy', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'jleroy@email.com', 'female', '1988-02-07', NOW(), 'profile4.jpg', 'France', 'Toulouse', 14, 'teacher'),
+('Nathan', 'Fournier', 'nfournier', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'nfournier@email.com', 'male', '1992-09-18', NOW(), 'profile5.jpg', 'France', 'Nice', 15, 'student'),
+('Camille', 'Thompson', 'cthompson', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'cthompson@email.com', 'female', '1989-12-30', NOW(), 'profile6.jpg', 'France', 'Bordeaux', 15, 'student'),
+('Théo', 'Robert', 'trobert', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'trobert@email.com', 'male', '1998-04-22', NOW(), 'profile7.jpg', 'France', 'Strasbourg', 14, 'student'),
+('Léa', 'Henry', 'lhenry', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'lhenry@email.com', 'female', '1991-07-09', NOW(), 'profile8.jpg', 'France', 'Lille', 13, 'student'),
+('Arthur', 'Petit', 'apetit', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'apetit@email.com', 'male', '1993-10-15', NOW(), 'profile9.jpg', 'France', 'Rennes', 12, 'student'),
+('Louise', 'Michell', 'lmichell', '$2y$12$uH/riSDkD4W//mfMP7QF4OoG1BQYZF/.tr20TUN.ECplkJYoil1/O', 'lmichell@email.com', 'female', '1994-06-28', NOW(), 'profile10.jpg', 'France', 'Grenoble', 11, 'student');
 ---------------------------------------
 ---------    Reserve    ----------------
 ---------------------------------------

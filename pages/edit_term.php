@@ -83,6 +83,7 @@ include "../inc/nav.php";
     <div class="main_wrapp">
         <section class="main_board">
             <div class="hero_of_main">
+            <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg" alt="Image of a course banner">
                 <div class="wrap">
                     <h1>Développeur Web & Web Mobile</h1>
                 </div>

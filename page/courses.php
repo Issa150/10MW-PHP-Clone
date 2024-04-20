@@ -1,41 +1,40 @@
 <?php
-function getField($id_field)
+function getField($students_memeber_id)
 {
+    
+    
     $db = new Database();
     $pdo = $db->connect();
     $sql = "SELECT name FROM studyfields WHERE id = :id";
     $request = $pdo->prepare($sql);
     $request->execute([
-        ':id' => $id_field
+        ':id' => $_SESSION['user10MW']['study_field_id']
     ]);
     $res = $request->fetch();
     return $res;
 }
-
-// dd($_SESSION);
+$datas = getInfoById("classes", 'study_field_id' , $_SESSION['user10MW']['study_field_id']);
 ?>
 
 <!-- ---------------------------------------------------------------------------- -->
 <div class='hero_of_main'>
-    <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg.jpeg" alt="">
+    <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg" alt="Image of a course banner">
 
     <div class="wrap">
-        <img class='profile' src="<?= (isset($currUser['image_profile']))
+        <img class='profile' src="<?= (!empty($currUser['image_profile']))
                                         ? (SITE_PATH . "assets/uploads/user/" . $currUser['image_profile'])
                                         : SITE_PATH . "assets/imgs/placeholders/imgPlaceholder01.png";
                                     ?>" alt="" />
 
         <div>
 
-            <?php 
-                $field = getField($_SESSION['user10MW']['the_student_id']);
-                if ($_SESSION['user10MW']['role'] === "student") {
-                    echo "<h1>".$_SESSION['user10MW']['first_name'] . " " . $_SESSION['user10MW']['last_name'] . "</h1>";
-                    echo "<p>" . $field['name'] . "</p>";
-                }else{
-                    echo "<h1>".$_SESSION['user10MW']['first_name'] . " " . $_SESSION['user10MW']['last_name'] . "</h1>";
-                }
-                ?>
+            <?php
+            $field = getField($_SESSION['user10MW']['the_student_id']);
+                // dd($field);
+            echo "<h1>" . $_SESSION['user10MW']['first_name'] . " " . $_SESSION['user10MW']['last_name'] . "</h1>";
+            echo "<p>" . $field['name'] . "</p>";
+
+            ?>
         </div>
     </div>
 
@@ -49,13 +48,21 @@ function getField($id_field)
 
 <div class="main_content">
 
-    <!-- Event cards -->
+    <!-- Event cards // Notifications  -->
     <div class="event-notif-container">
 
         <div class="content-row-container">
-            <div class="wrap">
+            <div class="wrap section-head">
                 <h2>Les evenements plus recents</h2>
-                <a>Voire tous</a>
+                <ul>
+                    <li>
+                        <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                        <ul>
+                            <li><a><i class="fa-solid fa-eye-slash"></i> Cacher le block</a></li>
+                            <li><a><i class="fa-solid fa-table-list"></i> Voir tous</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <div class="row">
                 <article class="event-card">
@@ -82,6 +89,7 @@ function getField($id_field)
 
         <div class="section-head">
             <h2>Mes cours</h2>
+            <span><?= count($datas)?> + (2 Gerenal)</span>
             <!-- <div>
                             <div class="filters">
                                 <button>
@@ -102,59 +110,65 @@ function getField($id_field)
         <div class="section-body">
 
             <!-- Carte du cours -->
-            <div class="card">
-                <img src="assets/imgs/html.jpg" alt="" />
-
-                <div class="content">
-                    <div>
-                        <p>Approfondir</p>
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
-
-                    <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
-                    <!-- <a href="<? //= SITE_PATH 
-                                    ?>page/cours-single.php?subject=html" class="red"> -->
-                    <a href="<?= SITE_PATH ?>pages/cours.php" class="red">
-                        HTML5
-                    </a>
-
-                    <div class="progression">
-                        <progress id="progression" value="100" max="100"></progress>
-                        <label htmlFor="progression">
-                            <span>Compeleté</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
             <!-- ------------- -->
-            <!-- Glossaire -->
-            <div class="card">
-                <img src="assets/imgs/abstract_2.jpg" alt="" />
 
-                <div class="content">
-                    <div>
-                        <p>Projet progressive</p>
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
+            <!-- General Courses across the fields -->
+            <div class="row">
 
-                    <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
-                    <a href="<?= SITE_PATH ?>pages/glossaires.php" class="red">
-                        Glossaire
-                    </a>
-
-                    <div class="progression">
-                        <!-- <progress id="progression" value="83" max="100"></progress> -->
-                        <label htmlFor="progression">
-
-                            <!-- <span>70%</span> progres -->
-                        </label>
+                <!-- Glossaire -->
+                <div class="card">
+                    <img src="assets/imgs/abstract_2.jpg" alt="" />
+    
+                    <div class="content">
+                        <div>
+                            <p>Projet progressive</p>
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+    
+                        <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
+                        <a href="<?= SITE_PATH ?>pages/glossaires.php" class="red">
+                            Glossaire
+                        </a>
+    
+                        <div class="progression">
+                            <!-- <progress id="progression" value="83" max="100"></progress> -->
+                            <label htmlFor="progression">
+    
+                                <!-- <span>70%</span> progres -->
+                            </label>
+                        </div>
                     </div>
                 </div>
+                <div class="card">
+                    <img src="assets/imgs/abstract_2.jpg" alt="" />
+    
+                    <div class="content">
+                        <div>
+                            <p>Projet progressive</p>
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+    
+                        <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
+                        <a href="<?= SITE_PATH ?>pages/glossaires.php" class="red">
+                            Glossaire
+                        </a>
+    
+                        <div class="progression">
+                            <!-- <progress id="progression" value="83" max="100"></progress> -->
+                            <label htmlFor="progression">
+    
+                                <!-- <span>70%</span> progres -->
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            
             <!-- ------------- -->
             <!-- Create new Cards -->
             <?php
-            $datas = getInfoById("classes", "study_field_id", 1);
+            // $datas = getInfoById("classes", 'study_field_id' , $_SESSION['user10MW']['study_field_id']);
             foreach ($datas as $data) {
             ?>
                 <div class="card">

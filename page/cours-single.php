@@ -80,7 +80,7 @@ ______________$$$$$$$$$$$$_______________
 
 
             <div class='hero_of_main cours-single'>
-                <img src="<?= SITE_PATH ?>assets/imgs/compressed-1photo-1497864149936-d3163f0c0f4b-min.jpeg" alt="">
+                <img src="<?= SITE_PATH ?>assets/imgs/placeholder-banner_course.jpeg" alt="">
 
                 <div class="wrap">
                     <h1><?= strtoupper($subject) ?></h1>

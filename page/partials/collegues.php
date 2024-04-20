@@ -1,48 +1,47 @@
-<div class="card">
+<?php
+$collegues = getInfoByJoin('students', 'members', '*', 'member_id' , "study_field_id", $_SESSION['user10MW']['study_field_id']);
+?>
 
-    <div class="card-head">
-        <img src="<?= SITE_PATH ?>assets/uploads/user/Screenshot 2024-02-04 111657.png" alt="">
-        <div class="meta-authorInfo">
-            <p>Kate Johansson</p>
+<div class="section-meta-info">
+
+    <p>Total classmates: <?= count($collegues)?></p> 
+
+    <a><i class="fa-solid fa-user-plus"></i></a>
+
+</div> 
+<?php 
+    
+    // dd($collegues);
+    if( count($collegues)  > 0 ) {
+    foreach($collegues as $collegue){    
+?>
+    <div class="card">
+
+        <div class="card-head">
+            <img src="<?=  !empty($collegue['image_profile']) ?SITE_PATH .'assets/uploads/user/'.$collegue['image_profile'] : SITE_PATH .'assets/imgs/placeholders/profile-placeholder.jpg' ?>" alt="">
+            <div class="meta-authorInfo">
+                <p><?= ucfirst($collegue['first_name']) . ' ' .$collegue['last_name']?></p>
+            </div>
+
+            <div class="metaInfo">
+                <ul>
+                    <li>
+                        <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                        <ul>
+                            <li><a><i class="fa-regular fa-envelope"></i> Contact</a></li>
+                            <li><a><i class="fa-solid fa-thumbtack"></i> Pin</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+            </div>
         </div>
 
-        <div class="metaInfo">
-            <ul>
-                <li>
-                    <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                    <ul>
-                        <li><a>Contact</a></li>
-                        <li><a>Pin</a></li>
-                    </ul>
-                </li>
-            </ul>
-            
-        </div>
     </div>
+<?php 
+} }else{
+    echo '<div class="card"><p>Aucun apprenant  enregistré pour ce cours!</p></div>';
+}
 
-</div>
-
-<div class="card">
-
-    <div class="card-head">
-        <img src="<?= SITE_PATH ?>assets/uploads/user/Screenshot 2024-02-04 111657.png" alt="">
-        <div class="meta-authorInfo">
-            <p>Kate Johansson</p>
-        </div>
-
-        <div class="metaInfo">
-            <ul>
-                <li>
-                    <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                    <ul>
-                        <li><a>Contact</a></li>
-                        <li><a>Pin</a></li>
-                    </ul>
-                </li>
-            </ul>
-            
-        </div>
-    </div>
-
-</div>
+?>
 

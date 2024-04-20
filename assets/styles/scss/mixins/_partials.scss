@@ -1,0 +1,93 @@
+@import "../base/Variables";
+%section_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    $teal_prime,
+    darken($teal_prime, $sec_teal_num)
+  );
+  color: $clr_semi_light;
+  padding-inline: 1em;
+  box-shadow: 0 5px 1em grey;
+  border-radius: $border_radius_containers;
+  margin-block: 1.5em 1em;
+}
+
+// submenu
+@mixin options($bgIcon: transparent, $clr: #fff, $clr_options: $teal_prime) {
+  ul {
+    & > li {
+      position: relative;
+
+      & > a {
+        color: $clr;
+        background: $bgIcon;
+        transition: 0.35s;
+
+        &:hover {
+          background: #e3e3e3;
+        }
+      }
+
+      a i {
+        padding: 0.5em !important;
+        margin: 0;
+      }
+
+      // option container
+      ul {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        right: 2.5em;
+        width: max-content;
+        background: rgb(240, 240, 240);
+        padding: 6px 10px;
+        border-radius: calc($border_radius_containers + 5px);
+        box-shadow: 0 0 1em rgba(35, 35, 35, 0.384);
+        // display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.25s;
+        transform: translateX(10px);
+
+        li {
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.35s;
+          transform: translateX(20px);
+          --base-delay: 0.1s;
+
+          &:nth-of-type(1) {
+            transition-delay: var(--base-delay);
+          }
+          &:nth-of-type(2) {
+            transition-delay: calc(var(--base-delay) * 1.7);
+          }
+
+          & > a {
+            color: $clr_options;
+            background: white;
+            &:hover {
+              background: #e3e3e3;
+            }
+          }
+        }
+      }
+
+      &:hover ul {
+        // display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+      &:hover ul li {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+  }
+}

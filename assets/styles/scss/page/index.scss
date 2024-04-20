@@ -1,21 +1,22 @@
 @import "../base/Variables";
 @import "../base/Reset-style";
 @import "../layout";
+@import "../mixins/partials";
 
 // partial of cours -single
 .hero_of_main.cours-single{
   height: 150px !important;
 
-  .wrap:has(h1) {
-    top: 50% !important;
-    left: 50% !important;
-    // height: 50%;
-    transform: translate(-50%,-50%);
+  // no effect
+  // .wrap:has(h1) {
+    // top: 50% !important;
+    // left: 50% !important;
+    // // height: 50%;
+    // transform: translate(-50%,-50%);
 
-  }
+  // }
 }
 
-// everything behind is handled by _layout.scss
 //*** this compnent is inside index.php
 .main_content {
   background: #fff;
@@ -32,7 +33,7 @@
   // specific selection one/multiple tagets inside certain multiple elements
   :is(.event-notif-container, .cours-container) :is(h2) {
     font-size: 2rem;
-    padding-block: 1em;
+    padding-block: .7em;
   }
 
   //sepecefic selections  01
@@ -41,9 +42,14 @@
       // margin: 2em 1em;
 
       .wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        
+        /* source inside mixin > partials*/
+        @extend %section_head;
+
+
+        // submenu 
+        /* source inside mixin > partials*/
+        @include options(transparent, white );
       }
 
       .row {
@@ -52,7 +58,7 @@
 
         & > article {
           // box-shadow: 0 0 10px rgb(186, 184, 184);
-          box-shadow: 0 0 10px rgba(0, 82, 89, 0.30);
+          box-shadow: 0 0 1em 5px rgba(0, 82, 89, .3);
           transition: 0.35s;
 
           border: 8px solid whitesmoke;
@@ -69,6 +75,7 @@
           padding: 1em;
           border-radius: 1em;
           background-color: $teal_palette_1;
+          background: darken($teal_prime, $sec_teal_num);
           color: azure;
           // background-image: radial-gradient(
           //     at 83% 13%,
@@ -97,6 +104,7 @@
               font-weight: 400;
               line-height: 0.9em;
               color: $clr_semi_light;
+              // color: $clr_prime_match;
             }
             p:nth-child(2) {
               margin-bottom: 0.8em;
@@ -104,13 +112,15 @@
           }
           h3 {
             font-size: 2rem;
-            //   color: $teal_prime;
+              color: $teal_prime;
+              color: $clr_prime_match;
           }
           .meta-data:nth-child(2) {
             flex-direction: column;
           }
         }
 
+        // styles in commun cards
         .event-card,
         .homework-card {
           .meta-info-author {
@@ -133,7 +143,11 @@
 
   //sepecefic selections  02
   .cours-container {
+
     .section-head {
+      
+      @extend %section_head;
+
       > div {
         display: flex;
         justify-content: space-between;
@@ -152,13 +166,22 @@
       }
     }
 
-    //   /////////////////////
+    //   //////   seperater   ////////
 
     .section-body {
-      margin-top: 1em;
+      // margin-top: 1em;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+
+      // seperating row of gernal topics from specialities// on top
+      & > div.row{
+        flex: 1 0 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
       .card {
         width: 300px;

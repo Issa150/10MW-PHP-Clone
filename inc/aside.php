@@ -33,7 +33,7 @@
 
         <div class="wrap_card_info">
           <div class="left">
-            <img class="profile" src="<?=(isset($_SESSION['user10MW'])) ?  SITE_PATH . "assets/uploads/user/".$_SESSION['user10MW']['image_profile'] : SITE_PATH."assets/imgs/placeholders/imgPlaceholder01.png"?>" alt="Avatar" />
+            <img class="profile" src="<?=(!empty($_SESSION['user10MW']['image_profile'])) ?  SITE_PATH . "assets/uploads/user/".$_SESSION['user10MW']['image_profile'] : SITE_PATH."assets/imgs/placeholders/imgPlaceholder01.png"?>" alt="Avatar" />
           </div>
           <div class="right">
             <h2>

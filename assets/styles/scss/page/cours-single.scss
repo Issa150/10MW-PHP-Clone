@@ -1,6 +1,7 @@
 @import "../base/Variables";
 @import "../base/Reset-style";
 @import "../layout";
+@import "../mixins/partials";
 
 
 .my_courses {
@@ -42,7 +43,7 @@
 
 
   .tab-head-container {
-    margin-bottom: 1em;
+    // margin-bottom: 1em;
 
     ul {
 
@@ -55,7 +56,22 @@
   }
 
   .tab-body-container {
-    margin-block: 3em;
+    margin-bottom: 3em;
+
+    .section-meta-info{
+      width: 80%;
+      margin:0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block:0 1em;
+
+      i{
+        margin: 0;
+      }
+
+    }
 
     .card {
       width: 80%;
@@ -86,35 +102,12 @@
           margin-left: auto;
 
           // submenu 
-          ul {
-            &>li {
-              position: relative;
-
-              a i{
-                padding: .5em !important;
-                margin: 0;
-              }
-
-
-              ul {
-                position: absolute;
-                z-index: 100;
-                top: 100%;
-                right: 0px;
-                width: 180px;
-                display: none;
-                background: lightgrey;
-                padding: 6px 10px;
-                border-radius: calc($border_radius_containers + 5px);
-
-              }
-
-              &:hover ul {
-                display: block;
-              }
-            }
-          }
+          /* source inside mixin > partials*/
+          @include options(transparent, $teal_prime);
         }
+      }
+      & > p{
+        text-align: center;
       }
     }
 

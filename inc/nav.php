@@ -71,11 +71,11 @@ if (isset($_GET['home'])) {
 
     <!-- Start Right Column -->
     <ul class="right_nav">
-        <li><img class='m_Icon' src="<?= SITE_PATH ?>assets/icons/search.svg" alt="" /></li>
-        <li><img class='m_Icon' src="<?= SITE_PATH ?>assets/icons/bell-solid.svg" alt="" /></li>
-        <li><img class='m_Icon' src="<?= SITE_PATH ?>assets/icons/conversation.svg" alt="" /></li>
-        <li>
-            <div class='menuItem1'>
+        <li><a><img class='m_Icon' src="<?= SITE_PATH ?>assets/icons/search.svg" alt="icon search" /></a></li>
+        <li><a><img class='m_Icon' src="<?= SITE_PATH ?>assets/icons/bell-solid.svg" alt="icon notification" /></a></li>
+        <li><a><img class='m_Icon' src="<?= SITE_PATH ?>assets/icons/conversation.svg" alt="icon messages" /></a></li>
+        <li class="menuItem1">
+            <!-- <div class=''> -->
                 <p>
                     <?php
                     if (isset($_SESSION["user10MW"])) {
@@ -86,12 +86,12 @@ if (isset($_GET['home'])) {
                     ?>
                 </p>
                 <img class='profile' src="
-                <?= (isset($_SESSION['user10MW']))
+                <?= (!empty($_SESSION['user10MW']['image_profile']))
                     ? SITE_PATH . "assets/uploads/user/" . $_SESSION['user10MW']['image_profile']
                     : SITE_PATH . "assets/imgs/placeholders/imgPlaceholder01.png";
-                ?>" alt="" />
+                ?>" alt="image profile inside menu" />
 
-                <img class='s_Icon' src="assets/icons/sort-down-solid.svg" alt="" />
+                <img class='s_Icon' src="<?= SITE_PATH ?>assets/icons/sort-down-solid.svg" alt="icone flash down" />
                 <ul class="subMenu">
                     <a href="<?= SITE_PATH ?>"><i class="fa-solid fa-house"></i>Tableau du bord</a>
                     <!-- <a href='<?= SITE_PATH ?>profile.php'><i class="fa-solid fa-user">Profile</i></a> -->
@@ -106,7 +106,7 @@ if (isset($_GET['home'])) {
                             </a>
 
                 </ul>
-            </div>
+            <!-- </div> -->
         </li>
     </ul>
 </nav>

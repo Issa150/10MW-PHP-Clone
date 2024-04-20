@@ -15,18 +15,18 @@ nav {
     gap: 1.3em;
 
     li {
-      list-style: none;
-      padding: auto;
+      // background: greenyellow;
 
-      &:has(i,img){
-        margin: 0;
-        padding: 0;
-      }
-      &:has(label){
+      // &:has(i,img){
+        // margin: 0;
+        // padding: 0;
+      // }
+      &:has(label,p){
         padding: 1em .5em;
       }
-      label{
+      label , p{
         display: block;
+        // background: cornflowerblue;
       }
       
       ul ,li div ul, .subMenu{
@@ -45,7 +45,7 @@ nav {
         z-index: 2;
         // display: none;
         background: white;
-        box-shadow: 0 5px 10px hsl(0 0% 0%/0.2);
+        box-shadow: 0 5px 10px hsl(0 0% 0%/0.7);
 
 
         a {
@@ -67,6 +67,16 @@ nav {
       // Submenu styles
     }
   }
+
+  ul.right_nav{
+    .menuItem1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+
+    }
+  }
 }
 
 /* _________________ */
@@ -77,23 +87,21 @@ nav {
 }
 .right_nav {
   display: inline-flex;
-  gap: 1.5em;
+  // gap: 1.5em;
 }
 
 /* ----------  Sub menu styles   -------------- */
 .menuItem1 {
   position: relative;
 }
-.subMenu:nth-child(2) {
-  left: -30px;
-  top: 101%;
-}
-.subMenu.s {
-  width: 250%;
-}
-.profile_open {
-  display: block;
-}
+// .subMenu:nth-child(2) {
+//   left: -30px;
+//   top: 101%;
+// }
+// no effect!!!
+// .subMenu.s {
+//   width: 250%;
+// }
 .subMenu li {
   width: 100%;
   background: transparent;
@@ -116,9 +124,9 @@ nav {
 .sub_menu_profile button i {
   margin-right: 10px;
 }
-.subMenu.open {
-  display: block;
-}
+// .subMenu.open {
+//   display: block;
+// }
 /* _________________ */
 /* Common */
 .s_Icon {
@@ -172,9 +180,9 @@ img.menu {
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
-li div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-}
+// li div {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 1em;
+// }
