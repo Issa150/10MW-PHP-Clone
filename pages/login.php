@@ -3,20 +3,33 @@ include_once "../config/variables.php";
 include "../config/connectionDB.php";
 include "../config/session_security.php";
 // include_once "../config/functions.php";
-
 ////////   function is ready to be moved to another file    ////////////
 function login($pdo, $username, $password)
 {
 
     // $query = "SELECT id,first_name,last_name,role,password,email,country,city,image_profile FROM members WHERE first_name = :name LIMIT 1";
+    // $query = "SELECT members.*, 
+    //                 students.member_id AS 'the_student_id', 
+    //                 students.study_field_id, 
+    //                 teachers.member_id AS 'the_teacher_id', 
+    //                 studyfields.image_banner AS 'field_banner'
+    //             FROM members
+    //             LEFT JOIN students ON members.id = students.member_id
+    //             LEFT JOIN teachers ON members.id = teachers.member_id
+    //             LEFT JOIN classes ON classes.id = teachers.class_id
+    //             LEFT JOIN studyfields ON studyfields.id = students.study_field_id
+    //             WHERE first_name = :first_name
+    //             LIMIT 1";
     $query = "SELECT members.*, 
                     students.member_id AS 'the_student_id', 
                     students.study_field_id, 
-                    teachers.member_id AS 'the_teacher_id', 
-                    studyfields.image_banner AS 'field_banner'
+                    teachers.member_id, 
+                    studyfields.image_banner AS 'field_banner',
+                    classes.id AS 'id_class'
                 FROM members
                 LEFT JOIN students ON members.id = students.member_id
                 LEFT JOIN teachers ON members.id = teachers.member_id
+                LEFT JOIN classes ON classes.id = teachers.class_id
                 LEFT JOIN studyfields ON studyfields.id = students.study_field_id
                 WHERE first_name = :first_name
                 LIMIT 1";
@@ -77,8 +90,8 @@ include "../inc/header.php";
                     Nom d'utilisateur ou mot de pass <br> ne sont pas correct!
                 </p>
             </div>
-            <input type="text" name="username" value="Alice" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
-            <input type="password" name="password" value="student" placeholder="Mot de passe"  />
+            <input type="text" name="username" value="Henry" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
+            <input type="password" name="password" value="teacher" placeholder="Mot de passe"  />
             <div class="wrap">
                 <input type="checkbox" name="" id="" />
                 <label htmlFor="">Se souvenir du nom d'utilisateurs</label>

@@ -23,5 +23,12 @@
         SET s.study_field_id = 2 -- replace 2 with the desired new study_field_id
         WHERE m.role = "student" AND sf.name = 'OldStudyFieldName'; -- replace 'OldStudyFieldName' with the desired old study field name
 
-
+-- Selecting Teachers info, and associated "class_id", "domain"
+    SELECT m.first_name,m.last_name, t.class_id,c.name AS 'Class', sf.name AS 'Domain'
+    FROM members m
+    INNER JOIN teachers t
+    INNER JOIN studyfields sf
+    INNER JOIN classes c
+    ON m.id = t.member_id AND t.class_id = c.id AND c.study_field_id = sf.id
+    WHERE m.role = "teacher"
 

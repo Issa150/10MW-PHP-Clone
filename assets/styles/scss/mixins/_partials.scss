@@ -22,12 +22,16 @@
       position: relative;
 
       & > a {
-        color: $clr;
         background: $bgIcon;
         transition: 0.35s;
-
+        
         &:hover {
           background: #e3e3e3;
+        }
+        
+        & > i{
+          color: $clr;
+
         }
       }
 
@@ -37,7 +41,7 @@
       }
 
       // option container
-      ul {
+      & > ul {
         position: absolute;
         z-index: 100;
         top: 0;
@@ -70,6 +74,10 @@
           & > a {
             color: $clr_options;
             background: white;
+
+            i{
+              color: $clr_options;
+            }
             &:hover {
               background: #e3e3e3;
             }

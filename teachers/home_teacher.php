@@ -1,18 +1,5 @@
 <?php
-// function getField($id_field)
-// {
-//     $db = new Database();
-//     $pdo = $db->connect();
-//     $sql = "SELECT name FROM studyfields WHERE id = :id";
-//     $request = $pdo->prepare($sql);
-//     $request->execute([
-//         ':id' => $id_field
-//     ]);
-//     $res = $request->fetch();
-//     return $res;
-// }
 
-// dd($_SESSION);
 ?>
 
 <!-- ---------------------------------------------------------------------------- -->
@@ -87,6 +74,7 @@
                                 <button>Carte</button>
                             </div>
                         </div> -->
+            <a><i class="fa-solid fa-circle-plus"></i></a>
         </div>
 
         <!-- {/* //////////////////////// */} -->
@@ -146,7 +134,9 @@
             <!-- ------------- -->
             <!-- Create new Cards -->
             <?php
-            $datas = getInfoById("teachers", "class_id", 5);
+            $datas = getInfoByJoin("teachers", "classes", "name", "class_id", "member_id", $_SESSION['user10MW']['member_id']);
+            // dd($_SESSION['user10MW']);
+            // dd($datas);
             foreach ($datas as $data) {
             ?>
                 <div class="card">
@@ -161,8 +151,8 @@
                         <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
                         <!-- <a href="<? //= SITE_PATH 
                                         ?>page/cours-single.php?subject=html" class="red"> -->
-                        <a href="<?= SITE_PATH ?>page/cours-single.php?subject=<?= $data['name'] ?>" class="red">
-                            <?= $data['name'] ?>
+                        <a href="<?= SITE_PATH ?>teachers/single-course.php?subject=<?= $data['name'] ?>" class="red">
+                            <?= $data['name']?>
                         </a>
 
                         <div class="progression">

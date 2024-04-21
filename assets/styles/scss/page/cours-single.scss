@@ -103,7 +103,7 @@
 
           // submenu 
           /* source inside mixin > partials*/
-          @include options(transparent, $teal_prime);
+          @include options(transparent, $teal_prime );
         }
       }
       & > p{

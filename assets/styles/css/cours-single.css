@@ -769,7 +769,6 @@ img.menu {
   position: relative;
 }
 .main_content .tab-body-container .card .card-head .metaInfo ul > li > a {
-  color: #005259;
   background: transparent;
   -webkit-transition: 0.35s;
   transition: 0.35s;
@@ -777,11 +776,14 @@ img.menu {
 .main_content .tab-body-container .card .card-head .metaInfo ul > li > a:hover {
   background: #e3e3e3;
 }
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > a > i {
+  color: #005259;
+}
 .main_content .tab-body-container .card .card-head .metaInfo ul > li a i {
   padding: 0.5em !important;
   margin: 0;
 }
-.main_content .tab-body-container .card .card-head .metaInfo ul > li ul {
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul {
   position: absolute;
   z-index: 100;
   top: 0;
@@ -801,7 +803,7 @@ img.menu {
   -webkit-transform: translateX(10px);
           transform: translateX(10px);
 }
-.main_content .tab-body-container .card .card-head .metaInfo ul > li ul li {
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul li {
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.35s;
@@ -810,19 +812,22 @@ img.menu {
           transform: translateX(20px);
   --base-delay: 0.1s;
 }
-.main_content .tab-body-container .card .card-head .metaInfo ul > li ul li:nth-of-type(1) {
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul li:nth-of-type(1) {
   -webkit-transition-delay: var(--base-delay);
           transition-delay: var(--base-delay);
 }
-.main_content .tab-body-container .card .card-head .metaInfo ul > li ul li:nth-of-type(2) {
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul li:nth-of-type(2) {
   -webkit-transition-delay: calc(var(--base-delay) * 1.7);
           transition-delay: calc(var(--base-delay) * 1.7);
 }
-.main_content .tab-body-container .card .card-head .metaInfo ul > li ul li > a {
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul li > a {
   color: #005259;
   background: white;
 }
-.main_content .tab-body-container .card .card-head .metaInfo ul > li ul li > a:hover {
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul li > a i {
+  color: #005259;
+}
+.main_content .tab-body-container .card .card-head .metaInfo ul > li > ul li > a:hover {
   background: #e3e3e3;
 }
 .main_content .tab-body-container .card .card-head .metaInfo ul > li:hover ul {
