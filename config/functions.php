@@ -44,6 +44,19 @@ function getInfoByJoin($table1, $table2, $col_table2_asked , $col_joining ,$col_
 
 }
 
+function getInfoByJoins($my_sql, $given_param){
+  $db = new Database();
+  $pdo = $db->connect();
+  $sql = $my_sql;
+  $request = $pdo->prepare($sql);
+  $request->execute([
+      ':id' => $given_param 
+  ]);
+  $res = $request->fetchAll();
+  return $res;
+
+}
+
 function dd($var){
   echo '<pre>';
   var_dump($var);

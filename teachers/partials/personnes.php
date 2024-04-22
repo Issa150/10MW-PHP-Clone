@@ -1,5 +1,13 @@
 <?php
-$collegues = getInfoByJoin('students', 'classes', 'name', 'class_id' , "class_id", isset($_GET['class']));
+$my_sql = "SELECT members.id, members.first_name,members.last_name,  classes.name
+            FROM members
+            INNER JOIN students
+            INNER JOIN classes
+            ON students.member_id = members.id
+            WHERE classes.id = :id";
+$collegues = getInfoByJoins($my_sql, $_SESSION['user10MW']['id_class'] );
+// dd($collegues);
+// dd(isset($_GET['class']));
 ?>
 
 <div class="section-meta-info">
