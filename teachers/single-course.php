@@ -99,11 +99,11 @@ ______________$$$$$$$$$$$$_______________
                 <div class="tab-head-container">
                     <ul>
                         
-                        <li><a class="<?= (!isset($_GET['tab']) || $_GET['tab'] == "stream") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=stream">Flux</a></li>
-                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "homework") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=homework">Travaux et devoirs</a></li>
-                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "personnes") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=personnes">Personnes</a></li>
-                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "resources") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=resources">Resources</a></li>
-                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "notes") ? "active" : ""?>" href="cours-single.php?subject=<?= $subject ?>&tab=notes">Notes</a></li>
+                        <li><a class="<?= (!isset($_GET['tab']) || $_GET['tab'] == "stream") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=stream">Flux</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "homework") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=homework">Travaux et devoirs</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "personnes") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=personnes">Personnes</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "resources") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=resources">Resources</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "notes") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=notes">Notes</a></li>
                     </ul>
                 </div>
 

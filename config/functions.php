@@ -30,7 +30,7 @@ function getInfoById($table, $col_name, $id){
 function getInfoByJoin($table1, $table2, $col_table2_asked , $col_joining ,$col_tabl1_asked, $col_table1_given){
   $db = new Database();
   $pdo = $db->connect();
-  $sql = "SELECT $table1.*,$table2.$col_table2_asked
+  $sql = "SELECT $table1.*,$table2.$col_table2_asked, $table2.id
           FROM $table1
           INNER JOIN $table2
           ON $table1.$col_joining = $table2.id
