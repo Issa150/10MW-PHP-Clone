@@ -151,7 +151,7 @@
                         <!-- {/* <a href="#">Développeur Web/ Web Mobile</a> */} -->
                         <!-- <a href="<? //= SITE_PATH 
                                         ?>page/cours-single.php?subject=html" class="red"> -->
-                        <a href="<?= SITE_PATH ?>teachers/single-course.php?subject=<?= $data['name'] ?>&class=<?=$data['id']?>" class="red">
+                        <a href="<?= SITE_PATH ?>teachers/single-course.php?subject=<?= $data['name'] ?>&class=<?=$data['class_id']?>" class="red">
                             <?= $data['name']?>
                         </a>
 

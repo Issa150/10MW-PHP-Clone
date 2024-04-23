@@ -26,6 +26,13 @@ if (!empty($_GET['subject']) && isset($_GET['subject'])) {
     header('Location:' . SITE_PATH);
 }
 
+
+if (!empty($_GET['class']) && isset($_GET['class'])) {
+
+    $_SESSION['currentClass'] = $_GET['class'];
+}
+
+
 $subject = $_SESSION['currentSubject'];
 /////////////
 $titleCss = "cours-single";
@@ -101,7 +108,7 @@ ______________$$$$$$$$$$$$_______________
                         
                         <li><a class="<?= (!isset($_GET['tab']) || $_GET['tab'] == "stream") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=stream">Flux</a></li>
                         <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "homework") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=homework">Travaux et devoirs</a></li>
-                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "personnes") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=personnes">Personnes</a></li>
+                        <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "personnes") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=personnes&class=<?=$_SESSION['currentClass'] ?>">Personnes</a></li>
                         <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "resources") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=resources">Resources</a></li>
                         <li><a class="<?= (isset($_GET['tab']) && $_GET['tab'] == "notes") ? "active" : ""?>" href="single-course.php?subject=<?= $subject ?>&tab=notes">Notes</a></li>
                     </ul>
