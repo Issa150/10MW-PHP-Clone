@@ -158,7 +158,7 @@
                         <div class="progression">
                             <!-- <progress id="progression" value="100" max="100"></progress> -->
                             <label htmlFor="progression">
-                                <span>Status progression</span>
+                                <span>Status progression-- class id: <?=$data['class_id']?></span>
                             </label>
                         </div>
                     </div>

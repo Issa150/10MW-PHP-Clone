@@ -5,18 +5,20 @@
 //             INNER JOIN classes
 //             ON students.member_id = members.id
 //             WHERE classes.id = :id";
-$my_sql =   "SELECT s.id,  s.class_id,m.first_name, m.last_name, sf.name
+$my_sql =   "SELECT m.id, s.id AS 'student id',  s.class_id AS 'student class_id',m.first_name, m.last_name, sf.name
             FROM students s 
             INNER JOIN classes c
             INNER JOIN members m
             INNER JOIN studyfields sf
-            ON s.class_id = c.id AND m.id = s.id AND sf.id = c.study_field_id
-            WHERE c.id = :id";
+            ON s.class_id = c.id AND m.id = s.member_id AND sf.id = c.study_field_id
+            WHERE m.role = 'student' AND c.id = :id
+            -- GROUP BY m.first_name
+            ORDER BY m.id";
 $collegues = getInfoByJoins($my_sql, $_SESSION['currentClass'] );
 // dd($collegues);
 // dd(isset($_GET['class']));
 // dd($_SESSION['user10MW']);
-echo"session id_class:" . $_SESSION['currentClass'];
+
 ?>
 
 <div class="section-meta-info">
@@ -27,6 +29,7 @@ echo"session id_class:" . $_SESSION['currentClass'];
 
 </div> 
 <?php 
+echo"selected id_class:" . $_SESSION['currentClass'];
     
     // dd($collegues);
     if( count($collegues)  > 0 ) {

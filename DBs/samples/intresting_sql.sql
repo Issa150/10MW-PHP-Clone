@@ -32,3 +32,8 @@
     ON m.id = t.member_id AND t.class_id = c.id AND c.study_field_id = sf.id
     WHERE m.role = "teacher"
 
+-- Inserting multy  rows into "students"
+    INSERT INTO `students` 
+    (`id`, `member_id`, `study_field_id`, `class_id`, `group_id`, `semester`, `academic_year_id`, `notes_id`) VALUES 
+    (NULL, '17', '17', '49', NULL, '1', '16', NULL), 
+    (NULL, '17', '17', '50', NULL, '1', '16', NULL);

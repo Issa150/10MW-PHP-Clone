@@ -90,7 +90,7 @@ include "../inc/header.php";
                     Nom d'utilisateur ou mot de pass <br> ne sont pas correct!
                 </p>
             </div>
-            <input type="text" name="username" value="Henry" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
+            <input type="text" name="username" value="Amélie" placeholder="Nom d'utilisateur/adresse de courriel" onChange={inputHandler} />
             <input type="password" name="password" value="teacher" placeholder="Mot de passe"  />
             <div class="wrap">
                 <input type="checkbox" name="" id="" />
